@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A cinematic frontend developer portfolio built with only HTML, CSS, and vanilla JavaScript.">
+    <title>&#x122D;&#x12D8;&#x12B;&#x338;z&#x336;z&#x336;&#x1203; | Frontend Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="intro-active">
+    <!-- Ambient layers that give the page its cinematic lighting -->
+    <div class="background-mesh" aria-hidden="true"></div>
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!-- Intro overlay that welcomes visitors before the portfolio appears -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="intro-orb intro-orb-left" aria-hidden="true"></div>
+        <div class="intro-orb intro-orb-right" aria-hidden="true"></div>
+
+        <div class="intro-shell">
+            <p class="intro-badge">Welcome</p>
+
+            <div class="intro-stage">
+                <h1 class="intro-name-display" id="introNameDisplay">
+                    &#x122D;&#x12D8;&#x12B;&#x338;z&#x336;z&#x336;&#x1203;</h1>
+
+                <p class="intro-note">
+                    Welcome in. Step into a frontend portfolio shaped with motion, atmosphere, and detail.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky navigation -->
+    <header class="site-header" id="top">
+        <nav class="navbar container" aria-label="Primary navigation">
+            <a class="brand" href="#home">CFX</a>
+
+            <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu"
+                aria-label="Open navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#contact" class="nav-cta">Book a Call</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero section" id="home">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-glow hero-glow-left" aria-hidden="true"></div>
+            <div class="hero-glow hero-glow-right" aria-hidden="true"></div>
+
+            <div class="container hero-layout">
+                <div class="hero-copy">
+                    <p class="eyebrow reveal" id="heroGreeting">
+                        <span class="eyebrow-prefix">Hi, I&apos;m</span>
+                        <span class="eyebrow-name"
+                            id="heroNameInline">&#x122D;&#x12D8;&#x12B;&#x338;z&#x336;z&#x336;&#x1203;</span>
+                        <span class="eyebrow-suffix">, a front end developer.</span>
+                    </p>
+                    <h1 class="hero-title" data-split>
+                        Designing interfaces that feel alive.
+                    </h1>
+                    <p class="hero-subtitle reveal delay-1">
+                        I build interactive web experiences with cinematic motion,
+                        careful typography, and fast, resilient frontends.
+                    </p>
+
+                    <div class="hero-actions reveal delay-2">
+                        <a class="button button-primary" href="#projects">View Projects</a>
+                        <a class="button button-secondary" href="#contact">Start a Project</a>
+                    </div>
+
+                    <ul class="hero-signals reveal delay-3" aria-label="Highlights">
+                        <li><span>04+</span> years crafting polished product interfaces</li>
+                        <li><span>18</span> shipped launches across web and brand</li>
+                        <li><span>100%</span> hand-coded in HTML, CSS, and JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="hero-stage reveal delay-2">
+                    <div class="stage-panel stage-primary">
+                        <div class="stage-toolbar">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="stage-screen">
+                            <div class="code-lines">
+                                <span class="code-line short"></span>
+                                <span class="code-line medium"></span>
+                                <span class="code-line long"></span>
+                                <span class="code-line medium"></span>
+                            </div>
+
+                            <div class="stage-metrics">
+                                <div class="metric-card">
+                                    <strong>Motion-first</strong>
+                                    <span>Micro-interactions that guide the eye.</span>
+                                </div>
+                                <div class="metric-card">
+                                    <strong>Responsive</strong>
+                                    <span>Layouts tuned for every screen size.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-panel stage-float top">
+                        <span>Live Build</span>
+                        <strong>Smooth scroll + modal UX</strong>
+                    </div>
+
+                    <div class="stage-panel stage-float bottom">
+                        <span>Design System</span>
+                        <strong>Dark UI with glass, glow, and depth</strong>
+                    </div>
+                </div>
+            </div>
+
+            <a class="scroll-cue reveal delay-3" href="#about">
+                <span></span>
+                Scroll to explore
+            </a>
+        </section>
+
+        <!-- About -->
+        <section class="about section" id="about">
+            <h1>ABOUT</h1>
+            <div class="container section-shell">
+                <div class="section-heading reveal">
+                    <p class="section-kicker">About</p>
+                    <h2>Clean code, bold interfaces, and motion with purpose.</h2>
+                </div>
+
+                <div class="about-layout">
+                    <div class="about-story reveal">
+                        <p class="about-lead" id="typedIntro">
+                            I turn product ideas into immersive interfaces that still feel effortless to use.
+                        </p>
+                        <p>
+                            I focus on frontend work that balances visual impact with performance:
+                            responsive layouts, thoughtful animation, accessible interaction design,
+                            and code that another developer can actually follow.
+                        </p>
+                        <p>
+                            Whether I am shaping a landing page, building a portfolio, or polishing a
+                            dashboard, my goal is the same: make the experience memorable without
+                            getting in the user's way.
+                        </p>
+                    </div>
+
+                    <div class="about-metrics">
+                        <article class="info-card reveal">
+                            <span class="info-label">Current Focus</span>
+                            <h3>Interactive storytelling for modern web brands.</h3>
+                        </article>
+                        <article class="info-card reveal">
+                            <span class="info-label">What I Value</span>
+                            <h3>Performance, clarity, accessibility, and visual confidence.</h3>
+                        </article>
+                        <article class="stat-card reveal">
+                            <strong data-count="18">0</strong>
+                            <span>projects launched</span>
+                        </article>
+                        <article class="stat-card reveal">
+                            <strong data-count="12">0</strong>
+                            <span>design systems refined</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="projects section" id="projects">
+            <div class="container section-shell">
+                <div class="section-heading reveal">
+                    <p class="section-kicker">Projects</p>
+                    <h2>Selected builds with depth, polish, and interaction detail.</h2>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project-card reveal" data-project="aurora">
+                        <div class="project-visual visual-aurora">
+                            <span class="project-badge">Featured</span>
+                            <button class="project-trigger" type="button">Open Case Study</button>
+                        </div>
+                        <div class="project-content">
+                            <h3>Aurora Commerce</h3>
+                            <p>
+                                A cinematic storefront concept with immersive product reveals, smooth
+                                transitions, and a premium checkout journey.
+                            </p>
+                            <div class="project-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-project="atlas">
+                        <div class="project-visual visual-atlas">
+                            <span class="project-badge">Dashboard</span>
+                            <button class="project-trigger" type="button">Open Case Study</button>
+                        </div>
+                        <div class="project-content">
+                            <h3>Atlas Metrics</h3>
+                            <p>
+                                A real-time analytics dashboard with layered data panels, animated
+                                counters, and fast visual scanning.
+                            </p>
+                            <div class="project-tags">
+                                <span>Data UI</span>
+                                <span>Motion</span>
+                                <span>Responsive</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-project="lumen">
+                        <div class="project-visual visual-lumen">
+                            <span class="project-badge">Portfolio</span>
+                            <button class="project-trigger" type="button">Open Case Study</button>
+                        </div>
+                        <div class="project-content">
+                            <h3>Lumen Studio</h3>
+                            <p>
+                                A visual portfolio for a creative studio, built around scroll drama,
+                                editorial typography, and elegant content pacing.
+                            </p>
+                            <div class="project-tags">
+                                <span>Branding</span>
+                                <span>UI/UX</span>
+                                <span>Animation</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="skills section" id="skills">
+            <div class="container section-shell">
+                <div class="section-heading reveal">
+                    <p class="section-kicker">Skills</p>
+                    <h2>Frontend strengths shaped around build quality and user feel.</h2>
+                </div>
+
+                <div class="skills-layout">
+                    <div class="skills-copy reveal">
+                        <p>
+                            I like interfaces that look expensive and still load fast. My workflow
+                            is equal parts visual design sense and implementation discipline.
+                        </p>
+                        <div class="skill-pills">
+                            <span>Semantic HTML</span>
+                            <span>Modern CSS</span>
+                            <span>Vanilla JavaScript</span>
+                            <span>Accessibility</span>
+                            <span>Performance</span>
+                            <span>Interaction Design</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-panel">
+                        <div class="skill-item reveal" data-level="96">
+                            <div class="skill-meta">
+                                <strong>HTML</strong>
+                                <span>96%</span>
+                            </div>
+                            <div class="skill-track"><span class="skill-fill"></span></div>
+                        </div>
+
+                        <div class="skill-item reveal" data-level="94">
+                            <div class="skill-meta">
+                                <strong>CSS</strong>
+                                <span>94%</span>
+                            </div>
+                            <div class="skill-track"><span class="skill-fill"></span></div>
+                        </div>
+
+                        <div class="skill-item reveal" data-level="90">
+                            <div class="skill-meta">
+                                <strong>JavaScript</strong>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-track"><span class="skill-fill"></span></div>
+                        </div>
+
+                        <div class="skill-item reveal" data-level="88">
+                            <div class="skill-meta">
+                                <strong>UI Animation</strong>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-track"><span class="skill-fill"></span></div>
+                        </div>
+
+                        <div class="skill-item reveal" data-level="84">
+                            <div class="skill-meta">
+                                <strong>Accessibility</strong>
+                                <span>84%</span>
+                            </div>
+                            <div class="skill-track"><span class="skill-fill"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact section" id="contact">
+            <div class="container section-shell">
+                <div class="section-heading reveal">
+                    <p class="section-kicker">Contact</p>
+                    <h2>Let&apos;s build something unforgettable on the web.</h2>
+                </div>
+
+                <div class="contact-layout">
+                    <div class="contact-panel reveal">
+                        <p class="contact-note">
+                            Open to freelance work, portfolio builds, product landing pages,
+                            and frontend refinement for teams that want more presence and polish.
+                        </p>
+
+                        <div class="contact-list">
+                            <a href="mailto:hello@noahreed.dev">hello@noahreed.dev</a>
+                            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                            <span>Remote / Worldwide</span>
+                        </div>
+
+                        <div class="social-row">
+                            <a href="#" aria-label="GitHub profile">GitHub</a>
+                            <a href="#" aria-label="LinkedIn profile">LinkedIn</a>
+                            <a href="#" aria-label="Behance profile">Behance</a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form reveal" id="contactForm" novalidate>
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Tell me about the experience you want to create." required></textarea>
+                        </div>
+
+                        <button class="button button-primary submit-button" type="submit">
+                            <span>Send Message</span>
+                        </button>
+                        <p class="form-status" id="formStatus" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <!-- <div class="container footer-layout">
+            <p>Built with plain HTML, CSS, and JavaScript.</p>
+            <a href="#home" class="footer-link">Back to top</a>
+        </div> -->
+        <div class="contact-methods">
+            <a href="mailto:chisombrnrd@gmail.com" class="contact-card gmail-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="contact-content">
+                    <h3>Email</h3>
+                    <p>chisombrnrd@gmail.com</p>
+                </div>
+                <div class="contact-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+
+            <a href="https://wa.me/2349021162982" target="_blank" rel="noopener noreferrer"
+                class="contact-card whatsapp-card">
+                <div class="contact-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="contact-content">
+                    <h3>WhatsApp</h3>
+                    <p>+234 902 116 2982</p>
+                </div>
+                <div class="contact-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Modal content is injected with JavaScript so the cards stay tidy -->
+    <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="modal-panel">
+            <button class="modal-close" id="modalClose" type="button" aria-label="Close project details">
+                Close
+            </button>
+            <div class="modal-content" id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
