@@ -486,23 +486,40 @@ function setupCursorAndSpotlight() {
 
     body.classList.add("has-cursor");
 
+    let lastX = 0;
+    let lastY = 0;
+    let frameId = null;
+
     window.addEventListener("mousemove", (event) => {
-        const { clientX, clientY } = event;
-        cursorDot.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
-        cursorRing.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
-        spotlight.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
+        lastX = event.clientX;
+        lastY = event.clientY;
 
-        if (heroStage) {
-            const xRatio = (clientX / window.innerWidth - 0.5) * 16;
-            const yRatio = (clientY / window.innerHeight - 0.5) * 16;
-
-            heroStage.style.transform = `translate3d(${xRatio * -0.25}px, ${yRatio * -0.25}px, 0)`;
-
-            floatingPanels.forEach((panel, index) => {
-                const factor = index === 0 ? 0.55 : 0.8;
-                panel.style.transform = `translate3d(${xRatio * factor}px, ${yRatio * factor}px, 0)`;
-            });
+        if (frameId) {
+            return;
         }
+
+        frameId = requestAnimationFrame(() => {
+            const clientX = lastX;
+            const clientY = lastY;
+            
+            cursorDot.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
+            cursorRing.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
+            spotlight.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
+
+            if (heroStage) {
+                const xRatio = (clientX / window.innerWidth - 0.5) * 16;
+                const yRatio = (clientY / window.innerHeight - 0.5) * 16;
+
+                heroStage.style.transform = `translate3d(${xRatio * -0.25}px, ${yRatio * -0.25}px, 0)`;
+
+                floatingPanels.forEach((panel, index) => {
+                    const factor = index === 0 ? 0.55 : 0.8;
+                    panel.style.transform = `translate3d(${xRatio * factor}px, ${yRatio * factor}px, 0)`;
+                });
+            }
+
+            frameId = null;
+        });
     });
 }
 

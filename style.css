@@ -225,7 +225,6 @@ body.intro-active .hero-copy .eyebrow.is-name-visible .eyebrow-name {
         radial-gradient(circle at 20% 25%, rgba(79, 195, 255, 0.14), transparent 24%),
         radial-gradient(circle at 78% 24%, rgba(255, 188, 119, 0.1), transparent 18%),
         linear-gradient(180deg, rgba(4, 8, 15, 0.18), rgba(5, 11, 18, 0.06));
-    backdrop-filter: blur(2px);
     pointer-events: none;
     z-index: 140;
     transition: opacity 900ms cubic-bezier(0.2, 0.8, 0.2, 1), visibility 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -244,6 +243,7 @@ body.intro-active .hero-copy .eyebrow.is-name-visible .eyebrow-name {
     filter: blur(70px);
     opacity: 0.55;
     animation: intro-float 9s ease-in-out infinite;
+    will-change: transform;
 }
 
 .intro-orb-left {
@@ -349,6 +349,7 @@ body.intro-active .hero-copy .eyebrow.is-name-visible .eyebrow-name {
     pointer-events: none;
     transform-origin: top left;
     transition: transform 900ms cubic-bezier(0.2, 0.85, 0.2, 1), opacity 260ms ease;
+    will-change: transform, opacity;
 }
 
 .site-header {
@@ -553,6 +554,7 @@ body.intro-active .hero-title {
     opacity: 0;
     transform: translateY(1.1em);
     filter: blur(10px);
+    will-change: opacity, transform, filter;
 }
 
 .hero-title.is-ready .word {
@@ -663,6 +665,7 @@ body.intro-active .hero-stage.reveal {
     border-radius: 999px;
     background: linear-gradient(90deg, rgba(115, 255, 209, 0.65), rgba(79, 195, 255, 0.18));
     animation: pulse 4s ease-in-out infinite;
+    will-change: opacity, transform;
 }
 
 .code-line.short {
@@ -776,12 +779,29 @@ body.intro-active .hero-stage.reveal {
     background: var(--accent);
     transform: translateX(-50%);
     animation: scroll-dot 2s ease-in-out infinite;
+    will-change: opacity, transform;
 }
 
 /* About and content sections */
 .about {
     padding-top: 8rem;
 }
+.about h1{
+    font-size: 700px;
+    letter-spacing: 60px;
+    margin-top: 40px;
+    z-index: -9999;
+    position: absolute;
+    font-family: 'Tulpen';
+    display: flex;
+    justify-self: center;
+    filter: opacity(15%);
+}
+
+  @font-face {
+    font-family: 'Tulpen';
+    src: url('TulpenOne-Regular.ttf') format('truetype');
+  }
 
 .about-layout {
     display: grid;
@@ -845,6 +865,17 @@ body.intro-active .hero-stage.reveal {
 /* Projects grid and hover treatment */
 .projects {
     padding-top: 8rem;
+}
+.projects h1{
+    font-size: 560px;
+    letter-spacing: 20px;
+    margin-top: 100px;
+    z-index: -9999;
+    position: absolute;
+    font-family: 'Tulpen';
+    display: flex;
+    justify-self: center;
+    filter: opacity(15%);
 }
 
 .projects-grid {
@@ -984,6 +1015,17 @@ body.intro-active .hero-stage.reveal {
     grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
     gap: 1.6rem;
     align-items: start;
+}
+.skills h1{
+    font-size: 700px;
+    letter-spacing: 40px;
+    margin-top: 80px;
+    z-index: -9999;
+    position: absolute;
+    font-family: 'Tulpen';
+    display: flex;
+    justify-self: center;
+    filter: opacity(15%);
 }
 
 .skills-copy,
@@ -1364,6 +1406,7 @@ body.has-cursor .cursor-ring {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
 }
 
 .reveal.delay-1 {
