@@ -1103,6 +1103,17 @@ body.intro-active .hero-stage.reveal {
     gap: 1.5rem;
     align-items: start;
 }
+.contact h1{
+        font-size: 500px;
+    letter-spacing: 30px;
+    margin-top: 150px;
+    z-index: -9999;
+    position: absolute;
+    font-family: 'Tulpen';
+    display: flex;
+    justify-self: center;
+    filter: opacity(35%);
+}
 
 .contact-panel,
 .contact-form {
