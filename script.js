@@ -55,6 +55,7 @@ const header = document.querySelector(".site-header");
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
 const navLinks = document.querySelectorAll(".nav-link");
+const toTopBtn = document.getElementById("toTopbtn");
 const introOverlay = document.getElementById("introOverlay");
 const introNameDisplay = document.getElementById("introNameDisplay");
 const introGreeting = document.getElementById("introGreeting");
@@ -479,6 +480,27 @@ function setupForm() {
 }
 
 // Enhance the experience on desktop with a soft spotlight and custom cursor.
+function setupToTopButton() {
+    if (!toTopBtn) {
+        return;
+    }
+
+    const handleScroll = () => {
+        if (window.scrollY > 500) {
+            toTopBtn.classList.add("is-visible");
+        } else {
+            toTopBtn.classList.remove("is-visible");
+        }
+    };
+
+    toTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+}
+
 function setupCursorAndSpotlight() {
     if (!supportsFinePointer || prefersReducedMotion) {
         return;
@@ -551,6 +573,7 @@ function initializePage() {
     setupProjects();
     setupForm();
     setupCursorAndSpotlight();
+    setupToTopButton();
     setupEvents();
     playIntroSequence();
 
