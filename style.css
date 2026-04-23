@@ -831,15 +831,17 @@ body.intro-active .hero-stage.reveal {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 80px;
-    width: 500px;
+    gap: 50px;
+    width: 450px;
     height: 200px;
     justify-content: center;
     border-radius: 30px;
     /* padding: 1.2rem 1.6rem; */
     border: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(18, 29, 42, 0.76), rgba(9, 16, 24, 0.94));
+    background: linear-gradient(180deg, rgba(18, 29, 42, 0.945), rgba(9, 16, 24, 0.94));
      box-shadow: var(--shadow-md);
+     justify-items: center;
+     
 }
 .display img{
     width: 160px;
@@ -848,29 +850,46 @@ body.intro-active .hero-stage.reveal {
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 18px 40px rgba(79, 195, 255, 0.16);
 }
-.display h2:before{
+.display img:after{
     content: "";
-    display: block;
-    /* flex-direction: row; */
+    display: none;
+}
+.display-img-wrapper {
+    position: relative;
+    display: inline-flex;
+}
+.display-img-wrapper::after {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 2px;
     height: 120px;
     background: rgba(115, 255, 209, 0.4);
     border-radius: 1px;
-    margin-left: -50px;
 }
 .display h2{
     font-size: 100px;
     color: var(--text);
     font-family: 'Tulpen';
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    gap: 0;
     margin-top: 100px;
+    margin-right: -40px;
 }
 .display h2::after{
     content: "-Frontend Developer";
-    font-size: 24px;
-    bottom: 0px;
-    position: absolute;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    /* margin-top: 8px; */
+    font-family: "Manrope", sans-serif;
+    margin-right: -800px;
 }
 .about h1{
     font-size: 700px;
@@ -891,16 +910,34 @@ body.intro-active .hero-stage.reveal {
 
 .about-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
     gap: 2rem;
+    row-gap: 1rem;
     align-items: start;
 }
 
+.display {
+    grid-column: 1;
+    grid-row: 1;
+}
+
 .about-story {
+    grid-column: 2;
+    grid-row: 1;
     padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
     background: linear-gradient(180deg, rgba(13, 25, 37, 0.82), rgba(8, 14, 22, 0.9));
+}
+
+.about-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    grid-column: 1;
+    grid-row: 2 / 4;
+    margin-top: -250px;
 }
 
 .about-story .about-lead {
