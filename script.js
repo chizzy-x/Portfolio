@@ -56,10 +56,6 @@ const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
 const navLinks = document.querySelectorAll(".nav-link");
 const toTopBtn = document.getElementById("toTopbtn");
-const introOverlay = document.getElementById("introOverlay");
-const introNameDisplay = document.getElementById("introNameDisplay");
-const introGreeting = document.getElementById("introGreeting");
-const introNameTarget = document.getElementById("introNameTarget");
 const sections = document.querySelectorAll("main section[id]");
 const revealItems = document.querySelectorAll(".reveal");
 const projectCards = document.querySelectorAll(".project-card");
@@ -76,13 +72,18 @@ const cursorDot = document.getElementById("cursorDot");
 const cursorRing = document.getElementById("cursorRing");
 const heroStage = document.querySelector(".hero-stage");
 const floatingPanels = document.querySelectorAll(".stage-float");
+const introOverlay = document.getElementById("introOverlay");
+const introShell = document.querySelector(".intro-shell");
+const introText = document.querySelector(".intro-text");
+const introImg = document.getElementById("introImg");
+const introDisp = document.querySelector(".intro-disp");
+const introDispRight = document.getElementById("disp-right");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-let typedIntroStarted = false;
 let activeProjectTrigger = null;
-let introFinished = false;
+let typedIntroStarted = false;
 
 // Split the hero heading into words so we can animate them in a staggered way.
 function splitHeroTitle() {
@@ -127,6 +128,58 @@ function revealHeroContent() {
     splitHeroTitle();
 }
 
+function playIntroSequence() {
+    if (!introOverlay || !introShell || !introText || !introImg || !introDisp || !introDispRight) {
+        body.classList.remove("intro-active");
+        revealHeroContent();
+        return;
+    }
+
+    if (prefersReducedMotion) {
+        introOverlay.classList.add("is-exiting");
+        body.classList.remove("intro-active");
+        revealHeroContent();
+
+        window.setTimeout(() => {
+            introOverlay.remove();
+        }, 20);
+
+        return;
+    }
+
+    const imageInDelay = 140;
+    const dispInDelay = 1420;
+    const textInDelay = 2840;
+    const dissolveDelay = 4780;
+    const siteRevealDelay = 5840;
+
+    window.setTimeout(() => {
+        introOverlay.classList.add("is-image-in");
+    }, imageInDelay);
+
+    window.setTimeout(() => {
+        introOverlay.classList.add("is-disp-in");
+    }, dispInDelay);
+
+    window.setTimeout(() => {
+        introOverlay.classList.add("is-text-in");
+    }, textInDelay);
+
+    window.setTimeout(() => {
+        introOverlay.classList.add("is-dissolving");
+    }, dissolveDelay);
+
+    window.setTimeout(() => {
+        introOverlay.classList.add("is-exiting");
+        body.classList.remove("intro-active");
+        revealHeroContent();
+    }, siteRevealDelay);
+
+    window.setTimeout(() => {
+        introOverlay.remove();
+    }, siteRevealDelay + 950);
+}
+
 function toggleMenu(forceState) {
     const shouldOpen = typeof forceState === "boolean"
         ? forceState
@@ -169,7 +222,7 @@ function animateCounter(element) {
     }
 
     const target = Number(element.getAttribute("data-count"));
-    const duration = prefersReducedMotion ? 0 : 1100;
+    const duration = prefersReducedMotion ? 0 : 1900;
     const startTime = performance.now();
 
     const update = (currentTime) => {
@@ -188,7 +241,6 @@ function animateCounter(element) {
     requestAnimationFrame(update);
 }
 
-// Type the lead sentence in the About section for a subtle story-first reveal.
 function typeIntroText() {
     if (!typedIntro || typedIntroStarted) {
         return;
@@ -212,7 +264,7 @@ function typeIntroText() {
         index += 1;
 
         if (index < text.length) {
-            window.setTimeout(writeCharacter, 24);
+            window.setTimeout(writeCharacter, 34);
         } else {
             typedIntro.classList.remove("typing-caret");
         }
@@ -223,109 +275,117 @@ function typeIntroText() {
 
 // Reveal sections on scroll and trigger any matching animations.
 function createRevealObserver() {
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    return;
+    const scrollDrivenItems = Array.from(revealItems).filter((item) => !item.closest(".hero"));
+
+    if (prefersReducedMotion) {
+        scrollDrivenItems.forEach((item) => {
+            item.classList.add("revealed");
+
+            if (item.classList.contains("skill-item")) {
+                animateSkillBar(item);
+            }
+
+            const counter = item.querySelector("[data-count]");
+            if (counter) {
+                animateCounter(counter);
+            }
+        });
+
+        typeIntroText();
+        return;
+    }
+
+    scrollDrivenItems.forEach((item) => {
+        item.classList.add("is-scrubbed");
+        item.style.setProperty("--reveal-opacity", "0");
+        item.style.setProperty("--reveal-shift", "88px");
+        item.style.setProperty("--reveal-blur", "8px");
+    });
+
+    let frameId = null;
+
+    const update = () => {
+        const viewportHeight = window.innerHeight;
+        let needsAnotherFrame = false;
+
+        scrollDrivenItems.forEach((item) => {
+            const rect = item.getBoundingClientRect();
+            const anchorPoint = rect.top + Math.min(rect.height * 0.28, 120);
+            const delayOffset = item.classList.contains("delay-3")
+                ? 0.18
+                : item.classList.contains("delay-2")
+                    ? 0.12
+                    : item.classList.contains("delay-1")
+                        ? 0.06
+                        : 0;
+
+            const start = viewportHeight * 0.94;
+            const end = viewportHeight * 0.32;
+            const range = start - end;
+            const rawProgress = (start - anchorPoint) / range;
+            const shiftedProgress = (rawProgress - delayOffset) / (1 - delayOffset);
+            const targetProgress = Math.max(0, Math.min(1, shiftedProgress));
+
+            const currentProgress = Number(item.dataset.revealProgress || 0);
+            let nextProgress = currentProgress + (targetProgress - currentProgress) * 0.17;
+
+            if (Math.abs(targetProgress - nextProgress) < 0.002) {
+                nextProgress = targetProgress;
+            } else {
+                needsAnotherFrame = true;
+            }
+
+            item.dataset.revealProgress = String(nextProgress);
+            item.style.setProperty("--reveal-opacity", nextProgress.toFixed(3));
+            item.style.setProperty("--reveal-shift", `${((1 - nextProgress) * 88).toFixed(1)}px`);
+            const blurProgress = Math.min(1, nextProgress * 2.15);
+            item.style.setProperty("--reveal-blur", `${((1 - blurProgress) * 8).toFixed(1)}px`);
+
+            if (item.classList.contains("display")) {
+                item.style.setProperty("--display-scale", (0.9 + nextProgress * 0.1).toFixed(3));
+                item.style.setProperty("--display-rotate", `${((1 - nextProgress) * -4.5).toFixed(2)}deg`);
+            }
+
+            if (item.classList.contains("skill-item")) {
+                const fill = item.querySelector(".skill-fill");
+                const level = Number(item.getAttribute("data-level")) || 0;
+
+                if (fill) {
+                    fill.style.width = `${(level * nextProgress).toFixed(1)}%`;
                 }
+            }
 
-                if (body.classList.contains("intro-active") && entry.target.closest(".hero")) {
-                    return;
-                }
+            const counter = item.querySelector("[data-count]");
+            if (counter) {
+                const total = Number(counter.getAttribute("data-count")) || 0;
+                counter.textContent = String(Math.round(total * nextProgress));
+            }
 
-                entry.target.classList.add("revealed");
+            if (item.classList.contains("about-story") && nextProgress > 0.32) {
+                typeIntroText();
+            }
+        });
 
-                if (entry.target.classList.contains("skill-item")) {
-                    animateSkillBar(entry.target);
-                }
-
-                const counter = entry.target.querySelector("[data-count]");
-                if (counter) {
-                    animateCounter(counter);
-                }
-
-                if (entry.target.classList.contains("about-story")) {
-                    typeIntroText();
-                }
-
-                observer.unobserve(entry.target);
-            });
-        },
-        {
-            threshold: 0.18
+        if (needsAnotherFrame) {
+            frameId = requestAnimationFrame(update);
+        } else {
+            frameId = null;
         }
-    );
+    };
 
-    revealItems.forEach((item) => observer.observe(item));
+    const requestUpdate = () => {
+        if (frameId !== null) {
+            return;
+        }
+
+        frameId = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    requestUpdate();
 }
 
-// Animate the large intro name into the inline greeting before revealing the page.
-function playIntroSequence() {
-    if (!introOverlay) {
-        revealHeroContent();
-        body.classList.remove("intro-active");
-        return;
-    }
-
-    if (prefersReducedMotion || !introNameDisplay || !introGreeting || !introNameTarget) {
-        revealHeroContent();
-        body.classList.remove("intro-active");
-        introOverlay.classList.add("is-exiting");
-        window.setTimeout(() => introOverlay.remove(), 20);
-        introFinished = true;
-        return;
-    }
-
-    introOverlay.classList.add("is-ready");
-
-    window.setTimeout(() => {
-        introOverlay.classList.add("is-greeting");
-
-        window.setTimeout(() => {
-            const sourceRect = introNameDisplay.getBoundingClientRect();
-            const targetRect = introNameTarget.getBoundingClientRect();
-
-            const nameClone = document.createElement("div");
-            nameClone.className = "intro-name-clone";
-            nameClone.textContent = introNameDisplay.textContent;
-            nameClone.style.top = `${sourceRect.top}px`;
-            nameClone.style.left = `${sourceRect.left}px`;
-
-            document.body.appendChild(nameClone);
-            introNameDisplay.style.opacity = "0";
-
-            const scaleX = targetRect.width / sourceRect.width;
-            const scaleY = targetRect.height / sourceRect.height;
-            const moveX = targetRect.left - sourceRect.left;
-            const moveY = targetRect.top - sourceRect.top;
-
-            requestAnimationFrame(() => {
-                nameClone.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scaleX}, ${scaleY})`;
-            });
-
-            window.setTimeout(() => {
-                introOverlay.classList.add("is-merged");
-                nameClone.style.opacity = "0";
-
-                window.setTimeout(() => {
-                    nameClone.remove();
-
-                    if (!introFinished) {
-                        introFinished = true;
-                        revealHeroContent();
-                        body.classList.remove("intro-active");
-                        introOverlay.classList.add("is-exiting");
-
-                        window.setTimeout(() => {
-                            introOverlay.remove();
-                        }, 900);
-                    }
-                }, 260);
-            }, 920);
-        }, 360);
-    }, 260);
-}
 
 function createSectionObserver() {
     const observer = new IntersectionObserver(
@@ -576,12 +636,6 @@ function initializePage() {
     setupToTopButton();
     setupEvents();
     playIntroSequence();
-
-    // If the about section is already visible on load, start typing immediately.
-    const aboutStory = document.querySelector(".about-story");
-    if (aboutStory && aboutStory.getBoundingClientRect().top < window.innerHeight * 0.78) {
-        typeIntroText();
-    }
 }
 
 initializePage();
