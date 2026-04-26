@@ -147,11 +147,21 @@ function playIntroSequence() {
         return;
     }
 
-    const imageInDelay = 140;
-    const dispInDelay = 1420;
-    const textInDelay = 2840;
+    // const imageInDelay = 140;
+    // const dispInDelay = 1420;
+    // const textInDelay = 2840;
+        const imageInDelay = 3000;
+    const dispInDelay = 3200;
+    const textInDelay = 140;
     const dissolveDelay = 4780;
     const siteRevealDelay = 5840;
+
+    
+    window.setTimeout(() => {
+        introText.style.filter = "brightness(10%)"
+        introText.style.filter = "opacity(10%)"
+        introText.style.transition = "1.6s"
+    },  2000)
 
     window.setTimeout(() => {
         introOverlay.classList.add("is-image-in");
