@@ -78,6 +78,8 @@ const introText = document.querySelector(".intro-text");
 const introImg = document.getElementById("introImg");
 const introDisp = document.querySelector(".intro-disp");
 const introDispRight = document.getElementById("disp-right");
+const introNameDisplay = document.getElementById("introNameDisplay");
+const introNote = document.querySelector(".intro-note"); 
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -156,11 +158,16 @@ function playIntroSequence() {
     const dissolveDelay = 4780;
     const siteRevealDelay = 5840;
 
-    
+    // introText.style.transition = "1.6s"
+
     window.setTimeout(() => {
         introText.style.filter = "brightness(10%)"
+        introNameDisplay.style.letterSpacing = "20px"
         introText.style.filter = "opacity(10%)"
         introText.style.transition = "1.6s"
+        introNote.style.transition = "1.6s"
+        introNote.style.filter = "opacity(0%)"
+        // introNote.style.filter = "brightness(5%)"
     },  2000)
 
     window.setTimeout(() => {
