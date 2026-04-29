@@ -152,8 +152,8 @@ function playIntroSequence() {
     // const imageInDelay = 140;
     // const dispInDelay = 1420;
     // const textInDelay = 2840;
-    const imageInDelay = 4000;
-    const dispInDelay = 4200;
+        const imageInDelay = 3000;
+    const dispInDelay = 3200;
     const textInDelay = 140;
     const dissolveDelay = 6200;
     const siteRevealDelay = 6440;
