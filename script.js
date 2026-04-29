@@ -1,10 +1,10 @@
 // Project details for the modal popup.
 const projects = {
     aurora: {
-        title: "Aurora Commerce",
+        title: "ExamPrepHub",
         visualClass: "visual-aurora",
         description:
-            "A premium storefront concept focused on mood, motion, and conversion. The experience uses rich layering, ambient glow, and polished transitions to make browsing feel cinematic without hurting performance.",
+            "ExamPrepHub is a web-based platform that helps students prepare for exams like JAMB, WAEC, and NECO through structured, syllabus-based topics.It provides clear notes, definitions, and practical tips to make studying easier and more focused.Designed for simplicity, it helps students know exactly what to read and study smarter.",
         features: [
             "Immersive hero-to-product storytelling",
             "Animated product reveal states",
@@ -13,7 +13,7 @@ const projects = {
             "Micro-interactions that guide attention"
         ],
         tech: ["HTML", "CSS", "JavaScript", "Responsive UI", "Motion Design"],
-        live: "#",
+        live: "https://examphb.netlify.app/",
         source: "#"
     },
     atlas: {
@@ -79,7 +79,7 @@ const introImg = document.getElementById("introImg");
 const introDisp = document.querySelector(".intro-disp");
 const introDispRight = document.getElementById("disp-right");
 const introNameDisplay = document.getElementById("introNameDisplay");
-const introNote = document.querySelector(".intro-note"); 
+const introNote = document.querySelector(".intro-note");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -152,23 +152,25 @@ function playIntroSequence() {
     // const imageInDelay = 140;
     // const dispInDelay = 1420;
     // const textInDelay = 2840;
-        const imageInDelay = 3000;
-    const dispInDelay = 3200;
+    const imageInDelay = 4000;
+    const dispInDelay = 4200;
     const textInDelay = 140;
-    const dissolveDelay = 4780;
-    const siteRevealDelay = 5840;
+    const dissolveDelay = 6200;
+    const siteRevealDelay = 6440;
 
     // introText.style.transition = "1.6s"
 
+    // Intro Animations
     window.setTimeout(() => {
         introText.style.filter = "brightness(10%)"
-        introNameDisplay.style.letterSpacing = "20px"
+        introNameDisplay.style.letterSpacing = "36px"
         introText.style.filter = "opacity(10%)"
+        introText.style.marginTop = "60px"
         introText.style.transition = "1.6s"
         introNote.style.transition = "1.6s"
         introNote.style.filter = "opacity(0%)"
         // introNote.style.filter = "brightness(5%)"
-    },  2000)
+    }, 3200);
 
     window.setTimeout(() => {
         introOverlay.classList.add("is-image-in");
@@ -512,9 +514,9 @@ function setupProjects() {
             closeModal();
         }
 
-        if (event.target.matches("[data-placeholder-link]")) {
-            event.preventDefault();
-        }
+        // if (event.target.matches("[data-placeholder-link]")) {
+        //     event.preventDefault();
+        // }
     });
 }
 
@@ -600,7 +602,7 @@ function setupCursorAndSpotlight() {
         frameId = requestAnimationFrame(() => {
             const clientX = lastX;
             const clientY = lastY;
-            
+
             cursorDot.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
             cursorRing.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
             spotlight.style.transform = `translate(${clientX}px, ${clientY}px) translate(-50%, -50%)`;
