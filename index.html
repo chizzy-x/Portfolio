@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="A cinematic frontend developer portfolio built with only HTML, CSS, and vanilla JavaScript.">
-    <title>&#x122D;&#x12D8;&#x12B;&#x338;z&#x336;z&#x336;&#x1203; | Frontend Developer Portfolio</title>
+    <title>CFX | Frontend Developer Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -82,9 +82,8 @@
             <div class="container hero-layout">
                 <div class="hero-copy">
                     <p class="eyebrow reveal" id="heroGreeting">
-                        <span class="eyebrow-prefix">Hi, I&apos;m</span>
-                        <span class="eyebrow-name"
-                            id="heroNameInline">&#x122D;&#x12D8;&#x12B;&#x338;z&#x336;z&#x336;&#x1203;</span>
+                        <span class="eyebrow-prefix">Hi, I'm</span>
+                        <span class="eyebrow-name" id="heroNameInline">CFX</span>
                         <span class="eyebrow-suffix">, a front end developer.</span>
                     </p>
                     <h1 class="hero-title" data-split>
@@ -227,6 +226,7 @@
                 <div class="projects-grid">
                     <article class="project-card reveal" data-project="aurora">
                         <div class="project-visual visual-aurora">
+                            <img src="study.svg.png" alt="">
                             <span class="project-badge">Featured</span>
                             <button class="project-trigger" type="button">Open Case Study</button>
                         </div>
@@ -366,86 +366,81 @@
 
                 <div class="contact-layout">
                     <div class="contact-panel reveal">
-                        <p class="contact-note">
-                            Open to freelance work, portfolio builds, product landing pages,
-                            and frontend refinement for teams that want more presence and polish.
-                        </p>
+                        <div class="contacts">
+                            <div class="contact-note">
+                                <p class="contact-note">
+                                    Open to freelance work, portfolio builds, product landing pages,
+                                    and frontend refinement for teams that want more presence and polish.
+                                </p>
+                            </div>
+                            <div class="contact-divider"></div>
+                            <div class="contact-right">
+                                <div class="contact-list">
+                                    <a href="mailto:chisombrnrd@gmail.com" class="contact-item">
+                                        <span class="contact-icon"><i class="ri-mail-line"></i></span>
+                                        <div>
+                                            <span class="contact-label">Email</span>
+                                            <span class="contact-value">chisombrnrd@gmail.com</span>
+                                        </div>
+                                    </a>
+                                    <a href="https://wa.me/2349021162982" class="contact-item">
+                                        <span class="contact-icon"><i class="ri-whatsapp-line"></i></span>
+                                        <div>
+                                            <span class="contact-label">WhatsApp</span>
+                                            <span class="contact-value">+234 902 116 2982</span>
+                                        </div>
+                                    </a>
+                                    <div class="contact-item">
+                                        <span class="contact-icon"><i class="ri-map-pin-line"></i></span>
+                                        <div>
+                                            <span class="contact-label">Location</span>
+                                            <span class="contact-value">Remote / Worldwide</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div class="contact-list">
-                            <a href="mailto:chisombrnrd@gmail.com">chisombrnrd@gmail.com</a>
-                            <a href="https://wa.me/2349021162982">+234 902 116 2982</a>
-                            <span>Remote / Worldwide</span>
+                                <div class="social-row reveal delay-1">
+                                    <p class="social-label">Connect with me</p>
+                                    <div class="social-links">
+                                        <a href="#" aria-label="GitHub profile" class="social-icon"><i
+                                                class="ri-github-fill"></i></a>
+                                        <a href="#" aria-label="LinkedIn profile" class="social-icon"><i
+                                                class="ri-linkedin-fill"></i></a>
+                                        <a href="#" aria-label="Twitter profile" class="social-icon"><i
+                                                class="ri-twitter-x-fill"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+<!-- 
+                            <div class="cta-container reveal delay-2">
+                                <a href="mailto:chisombrnrd@gmail.com" class="button button-primary">Send an Email</a>
+                                <a href="https://wa.me/2349021162982" class="button button-secondary">Start on
+                                    WhatsApp</a>
+                            </div> -->
                         </div>
 
-                        <div class="social-row">
-                            <a href="#" aria-label="GitHub profile"><i class="ri-github-fill"></i></a>
-                            <a href="#" aria-label="LinkedIn profile"><i class="ri-linkedin-fill"></i></a>
-                            <a href="#" aria-label="Behance profile"><i class="ri-twitter-x-fill"></i></a>
-                        </div>
                     </div>
-
-                    <form class="contact-form reveal" id="contactForm" novalidate>
-                        <div class="field">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your name" required>
-                        </div>
-
-                        <div class="field">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
-                        </div>
-
-                        <div class="field">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5"
-                                placeholder="Tell me about the experience you want to create." required></textarea>
-                        </div>
-
-                        <button class="button button-primary submit-button" type="submit"><a
-                                href="mailto:chisombrnrd@gmail.com"><span>Send Message</span></a>
-
-                        </button>
-                        <p class="form-status" id="formStatus" aria-live="polite"></p>
-                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- <footer class="site-footer">
-        <div class="container footer-layout">
-            <p>Built with plain HTML, CSS, and JavaScript.</p>
-            <a href="#home" class="footer-link">Back to top</a>
-        </div>
-        <div class="contact-methods">
-            <a href="mailto:chisombrnrd@gmail.com" class="contact-card gmail-card">
-                <div class="contact-icon">
-                    <i class="fa-solid fa-envelope"></i>
+    <footer class="site-footer" style="border: none;">
+        <div class="container footer-content">
+            <div class="footer-layout">
+                <div class="footer-section reveal">
+                    <h3>Built With Care</h3>
+                    <p>Crafted with pure HTML, CSS, and vanilla JavaScript—no frameworks, no bloat. Just clean, fast
+                        frontend code.</p>
                 </div>
-                <div class="contact-content">
-                    <h3>Email</h3>
-                    <p>chisombrnrd@gmail.com</p>
-                </div>
-                <div class="contact-arrow">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-            </a>
+            </div>
 
-            <a href="https://wa.me/2349021162982" target="_blank" rel="noopener noreferrer"
-                class="contact-card whatsapp-card">
-                <div class="contact-icon">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div class="contact-content">
-                    <h3>WhatsApp</h3>
-                    <p>+234 902 116 2982</p>
-                </div>
-                <div class="contact-arrow">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
-            </a>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CFX. All rights reserved. Designed and developed by CFX.</p>
+            </div>
         </div>
-    </footer> -->
+    </footer>
 
     <!-- Modal content is injected with JavaScript so the cards stay tidy -->
     <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">

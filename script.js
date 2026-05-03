@@ -62,9 +62,6 @@ const projectCards = document.querySelectorAll(".project-card");
 const modal = document.getElementById("projectModal");
 const modalContent = document.getElementById("modalContent");
 const modalClose = document.getElementById("modalClose");
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
-const submitButton = contactForm.querySelector(".submit-button");
 const typedIntro = document.getElementById("typedIntro");
 const heroTitle = document.querySelector("[data-split]");
 const spotlight = document.getElementById("spotlight");
@@ -152,8 +149,8 @@ function playIntroSequence() {
     // const imageInDelay = 140;
     // const dispInDelay = 1420;
     // const textInDelay = 2840;
-        const imageInDelay = 3000;
-    const dispInDelay = 3200;
+    const imageInDelay = 3500;
+    const dispInDelay = 3700;
     const textInDelay = 140;
     const dissolveDelay = 6200;
     const siteRevealDelay = 6440;
@@ -162,13 +159,28 @@ function playIntroSequence() {
 
     // Intro Animations
     window.setTimeout(() => {
+        const compactWelcome = window.innerWidth <= 560;
+        const narrowWelcome = window.innerWidth <= 700;
+        const welcomeScale = compactWelcome
+            ? Math.min(window.innerWidth * 0.42, 170)
+            : narrowWelcome
+                ? Math.min(window.innerWidth * 0.48, 250)
+                : 360;
+        const welcomeTracking = compactWelcome ? "0.1em" : narrowWelcome ? "0.14em" : "40px";
+        const welcomeOffset = compactWelcome ? "0px" : narrowWelcome ? "-18px" : "-90px";
+        const welcomeMarginTop = compactWelcome ? "16px" : narrowWelcome ? "24px" : "40px";
+
         introText.style.filter = "brightness(10%)"
-        introNameDisplay.style.letterSpacing = "36px"
+        introNameDisplay.style.letterSpacing = welcomeTracking
         introText.style.filter = "opacity(10%)"
-        introText.style.marginTop = "60px"
-        introText.style.transition = "1.6s"
+        introText.style.transition = " .6s"
         introNote.style.transition = "1.6s"
+        introNameDisplay.style.transition = "1.6s"
+        introNameDisplay.style.fontSize = `${welcomeScale}px`
+        // introNameDisplay.style.textAlign = "center"
+        introNameDisplay.style.marginLeft = welcomeOffset
         introNote.style.filter = "opacity(0%)"
+        introText.style.marginTop = welcomeMarginTop
         // introNote.style.filter = "brightness(5%)"
     }, 3200);
 
@@ -318,35 +330,47 @@ function createRevealObserver() {
         item.classList.add("is-scrubbed");
         item.style.setProperty("--reveal-opacity", "0");
         item.style.setProperty("--reveal-shift", "88px");
-        item.style.setProperty("--reveal-blur", "8px");
+        item.style.setProperty("--reveal-blur", "9px");
     });
 
     let frameId = null;
 
     const update = () => {
         const viewportHeight = window.innerHeight;
+        const remainingScroll = document.documentElement.scrollHeight - (window.scrollY + viewportHeight);
         let needsAnotherFrame = false;
 
         scrollDrivenItems.forEach((item) => {
             const rect = item.getBoundingClientRect();
-            const anchorPoint = rect.top + Math.min(rect.height * 0.28, 120);
+            const isFooterReveal = Boolean(item.closest(".site-footer"));
+            const anchorPoint = rect.top + Math.min(rect.height * 0.18, 84);
             const delayOffset = item.classList.contains("delay-3")
-                ? 0.18
+                ? 0.14
                 : item.classList.contains("delay-2")
-                    ? 0.12
+                    ? 0.09
                     : item.classList.contains("delay-1")
-                        ? 0.06
+                        ? 0.04
                         : 0;
 
-            const start = viewportHeight * 0.94;
-            const end = viewportHeight * 0.32;
+            const start = viewportHeight * 0.96;
+            const end = isFooterReveal ? viewportHeight * 0.62 : viewportHeight * 0.44;
             const range = start - end;
             const rawProgress = (start - anchorPoint) / range;
             const shiftedProgress = (rawProgress - delayOffset) / (1 - delayOffset);
-            const targetProgress = Math.max(0, Math.min(1, shiftedProgress));
+            let targetProgress = Math.max(0, Math.min(1, shiftedProgress));
+
+            if (isFooterReveal) {
+                const assistDistance = Math.max(140, viewportHeight * 0.22);
+                const footerAssist = 1 - Math.max(0, remainingScroll) / assistDistance;
+                targetProgress = Math.max(targetProgress, Math.max(0, Math.min(1, footerAssist)));
+            }
 
             const currentProgress = Number(item.dataset.revealProgress || 0);
             let nextProgress = currentProgress + (targetProgress - currentProgress) * 0.17;
+
+            if (isFooterReveal && remainingScroll <= 24) {
+                nextProgress = 1;
+            }
 
             if (Math.abs(targetProgress - nextProgress) < 0.002) {
                 nextProgress = targetProgress;
@@ -354,15 +378,16 @@ function createRevealObserver() {
                 needsAnotherFrame = true;
             }
 
+            const renderProgress = 1 - Math.pow(1 - nextProgress, 1.26);
             item.dataset.revealProgress = String(nextProgress);
-            item.style.setProperty("--reveal-opacity", nextProgress.toFixed(3));
-            item.style.setProperty("--reveal-shift", `${((1 - nextProgress) * 88).toFixed(1)}px`);
-            const blurProgress = Math.min(1, nextProgress * 2.15);
-            item.style.setProperty("--reveal-blur", `${((1 - blurProgress) * 8).toFixed(1)}px`);
+            item.style.setProperty("--reveal-opacity", renderProgress.toFixed(3));
+            item.style.setProperty("--reveal-shift", `${((1 - renderProgress) * 88).toFixed(1)}px`);
+            const blurProgress = Math.min(1, renderProgress * 2.3);
+            item.style.setProperty("--reveal-blur", `${((1 - blurProgress) * 9).toFixed(1)}px`);
 
             if (item.classList.contains("display")) {
-                item.style.setProperty("--display-scale", (0.9 + nextProgress * 0.1).toFixed(3));
-                item.style.setProperty("--display-rotate", `${((1 - nextProgress) * -4.5).toFixed(2)}deg`);
+                item.style.setProperty("--display-scale", (0.9 + renderProgress * 0.1).toFixed(3));
+                item.style.setProperty("--display-rotate", `${((1 - renderProgress) * -4.5).toFixed(2)}deg`);
             }
 
             if (item.classList.contains("skill-item")) {
@@ -370,17 +395,17 @@ function createRevealObserver() {
                 const level = Number(item.getAttribute("data-level")) || 0;
 
                 if (fill) {
-                    fill.style.width = `${(level * nextProgress).toFixed(1)}%`;
+                    fill.style.width = `${(level * renderProgress).toFixed(1)}%`;
                 }
             }
 
             const counter = item.querySelector("[data-count]");
             if (counter) {
                 const total = Number(counter.getAttribute("data-count")) || 0;
-                counter.textContent = String(Math.round(total * nextProgress));
+                counter.textContent = String(Math.round(total * renderProgress));
             }
 
-            if (item.classList.contains("about-story") && nextProgress > 0.32) {
+            if (item.classList.contains("about-story") && renderProgress > 0.3) {
                 typeIntroText();
             }
         });
@@ -520,44 +545,6 @@ function setupProjects() {
     });
 }
 
-// Frontend-only form feedback so the page still feels complete without a backend.
-function setupForm() {
-    contactForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const formData = new FormData(contactForm);
-        const name = String(formData.get("name") || "").trim();
-        const email = String(formData.get("email") || "").trim();
-        const message = String(formData.get("message") || "").trim();
-
-        formStatus.className = "form-status";
-
-        if (!name || !email || !message) {
-            formStatus.textContent = "Please fill in your name, email, and message.";
-            formStatus.classList.add("is-error");
-            return;
-        }
-
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            formStatus.textContent = "Please enter a valid email address.";
-            formStatus.classList.add("is-error");
-            return;
-        }
-
-        submitButton.classList.add("is-loading");
-        submitButton.querySelector("span").textContent = "Sending...";
-        formStatus.textContent = "";
-
-        window.setTimeout(() => {
-            submitButton.classList.remove("is-loading");
-            submitButton.querySelector("span").textContent = "Send Message";
-            formStatus.textContent = "Message sent. Thanks for reaching out.";
-            formStatus.classList.add("is-success");
-            contactForm.reset();
-        }, prefersReducedMotion ? 0 : 900);
-    });
-}
-
 // Enhance the experience on desktop with a soft spotlight and custom cursor.
 function setupToTopButton() {
     if (!toTopBtn) {
@@ -650,7 +637,6 @@ function initializePage() {
     createRevealObserver();
     createSectionObserver();
     setupProjects();
-    setupForm();
     setupCursorAndSpotlight();
     setupToTopButton();
     setupEvents();
@@ -658,3 +644,4 @@ function initializePage() {
 }
 
 initializePage();
+
