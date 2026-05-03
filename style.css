@@ -1277,12 +1277,12 @@ body.intro-active .toTopbtn {
     opacity: 0.75;
 }
 
-.visual-aurora {
+/* .visual-aurora {} */
     /* background:
         radial-gradient(circle at 18% 18%, rgba(115, 255, 209, 0.32), transparent 26%),
         radial-gradient(circle at 76% 24%, rgba(79, 195, 255, 0.4), transparent 28%),
         linear-gradient(145deg, #102233, #061018); */
-}
+
 
 .visual-aurora img {
     z-index: -1;
