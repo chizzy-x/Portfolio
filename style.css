@@ -249,7 +249,7 @@ button {
     pointer-events: none;
 }
 
-.intro-shell{
+.intro-shell {
     position: fixed;
     inset: 0;
     display: grid;
@@ -300,13 +300,13 @@ button {
     z-index: 0;
 }
 
-.intro-shell > *{
+.intro-shell>* {
     grid-area: 1 / 1;
     position: relative;
     z-index: 1;
 }
 
-.intro-text{
+.intro-text {
     display: grid;
     gap: 1.25rem;
     text-align: center;
@@ -325,7 +325,7 @@ button {
     backface-visibility: hidden;
 }
 
-.intro-text h1{
+.intro-text h1 {
     font-family: 'Tulpen';
     font-size: clamp(8rem, 22vw, 18rem);
     line-height: 0.8;
@@ -334,28 +334,24 @@ button {
     margin: 0;
     color: transparent;
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             rgba(255, 255, 255, 0.98) 0%,
             rgba(245, 247, 251, 0.94) 20%,
             rgba(115, 255, 209, 0.94) 56%,
             rgba(79, 195, 255, 0.86) 78%,
-            rgba(255, 188, 119, 0.75) 100%
-        );
+            rgba(255, 188, 119, 0.75) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
     filter:
-        blur(24px)
-        drop-shadow(0 0 18px rgba(79, 195, 255, 0.12))
-        drop-shadow(0 0 34px rgba(115, 255, 209, 0.08));
+        blur(24px) drop-shadow(0 0 18px rgba(79, 195, 255, 0.12)) drop-shadow(0 0 34px rgba(115, 255, 209, 0.08));
     transition:
         opacity 1320ms cubic-bezier(0.2, 0.8, 0.2, 1),
         transform 1320ms cubic-bezier(0.2, 0.8, 0.2, 1),
         filter 1400ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.intro-text p{
+.intro-text p {
     margin: 0;
     max-width: 40rem;
     font-family: "Syne";
@@ -363,13 +359,11 @@ button {
     line-height: 1.8;
     color: transparent;
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(245, 247, 251, 0.92) 0%,
             rgba(215, 225, 236, 0.86) 42%,
             rgba(155, 174, 191, 0.88) 72%,
-            rgba(115, 255, 209, 0.82) 100%
-        );
+            rgba(115, 255, 209, 0.82) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     text-shadow: 0 0 18px rgba(79, 195, 255, 0.06);
@@ -379,7 +373,7 @@ button {
         filter 1260ms cubic-bezier(0.16, 1, 0.3, 1) 140ms;
 }
 
-.intro-disp{
+.intro-disp {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -393,7 +387,7 @@ button {
     z-index: 999;
 }
 
-.intro-disp img{
+.intro-disp img {
     width: 320px;
     height: 320px;
     border-radius: 50%;
@@ -414,7 +408,7 @@ button {
         filter 1300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.intro-disp .divider{
+.intro-disp .divider {
     border: 2px solid rgba(87, 180, 226, 0.877);
     height: 160px;
     border-radius: 100px;
@@ -425,21 +419,19 @@ button {
         transform 850ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms;
 }
 
-.intro-disp h1{
+.intro-disp h1 {
     margin: 0;
     font-family: 'Tulpen';
     font-size: clamp(9rem, 18vw, 18rem);
     line-height: 0.8;
-    background: linear-gradient(
-          rgba(101, 226, 184, 0.94) ,
-          rgba(61, 181, 241, 0.945) 
-    );
+    background: linear-gradient(rgba(101, 226, 184, 0.94),
+            rgba(61, 181, 241, 0.945));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-#disp-right{
+#disp-right {
     display: flex;
     align-items: center;
     gap: 1.2rem;
@@ -479,9 +471,7 @@ button {
 
 .intro-overlay.is-text-in .intro-text h1 {
     filter:
-        blur(0)
-        drop-shadow(0 0 18px rgba(79, 195, 255, 0.12))
-        drop-shadow(0 0 34px rgba(115, 255, 209, 0.08));
+        blur(0) drop-shadow(0 0 18px rgba(79, 195, 255, 0.12)) drop-shadow(0 0 34px rgba(115, 255, 209, 0.08));
 }
 
 .intro-overlay.is-text-in .intro-text p {
@@ -522,7 +512,7 @@ button {
     transition: background var(--transition), border-color var(--transition), transform var(--transition);
 }
 
-.toTopbtn{
+.toTopbtn {
     position: fixed;
     bottom: 35px;
     right: 2rem;
@@ -540,11 +530,13 @@ button {
     transition: opacity var(--transition), transform 300ms cubic-bezier(0.2, 0.9, 0.2, 1), border-color 300ms ease, box-shadow 300ms ease, background 300ms ease;
     z-index: 999;
 }
+
 .toTopbtn.is-visible {
     opacity: 0.8;
     pointer-events: auto;
 }
-.toTopbtn i{
+
+.toTopbtn i {
     color: var(--accent);
     font-size: 20px;
     line-height: 1;
@@ -552,6 +544,7 @@ button {
     align-items: center;
     justify-content: center;
 }
+
 .toTopbtn:hover {
     opacity: 1;
     transform: translateY(-6px) scale(1.08);
@@ -559,6 +552,7 @@ button {
     background: linear-gradient(135deg, rgba(115, 255, 209, 0.18), rgba(79, 195, 255, 0.14));
     box-shadow: 0 12px 32px rgba(115, 255, 209, 0.2);
 }
+
 body.intro-active .toTopbtn {
     pointer-events: none;
 }
@@ -648,7 +642,7 @@ body.intro-active .toTopbtn {
     border-color: var(--accent);
     background: rgba(10, 13, 24, 0.836);
     box-shadow: 0 18px 32px rgba(0, 0, 0, 0.22);
-    
+
 }
 
 .nav-toggle {
@@ -1000,7 +994,8 @@ body.intro-active .toTopbtn {
 .about {
     padding-top: 8rem;
 }
-.display{
+
+.display {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1019,20 +1014,19 @@ body.intro-active .toTopbtn {
     justify-items: center;
     border-color: rgba(25, 208, 240, 0.836);
 }
+
 .display::before {
     content: "";
     position: absolute;
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: conic-gradient(
-        from 0deg,
-        rgba(79, 195, 255, 0.08),
-        rgba(115, 255, 209, 0.95),
-        rgba(255, 188, 119, 0.55),
-        rgba(79, 195, 255, 0.08),
-        rgba(115, 255, 209, 0.95)
-    );
+    background: conic-gradient(from 0deg,
+            rgba(79, 195, 255, 0.08),
+            rgba(115, 255, 209, 0.95),
+            rgba(255, 188, 119, 0.55),
+            rgba(79, 195, 255, 0.08),
+            rgba(115, 255, 209, 0.95));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
@@ -1046,7 +1040,7 @@ body.intro-active .toTopbtn {
     content: none;
 }
 
-.display > * {
+.display>* {
     position: relative;
     z-index: 1;
 }
@@ -1074,21 +1068,25 @@ body.intro-active .toTopbtn {
     opacity: 1;
     transform: scale(1);
 }
-.display img{
+
+.display img {
     width: 160px;
     height: 160px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 18px 40px rgba(79, 195, 255, 0.16);
 }
-.display img:after{
+
+.display img:after {
     content: "";
     display: none;
 }
+
 .display-img-wrapper {
     position: relative;
     display: inline-flex;
 }
+
 .display-img-wrapper::after {
     content: "";
     position: absolute;
@@ -1100,7 +1098,8 @@ body.intro-active .toTopbtn {
     background: rgba(115, 255, 209, 0.4);
     border-radius: 1px;
 }
-.display h2{
+
+.display h2 {
     font-size: 100px;
     color: var(--text);
     font-family: 'Tulpen';
@@ -1110,7 +1109,8 @@ body.intro-active .toTopbtn {
     margin-top: 100px;
     margin-right: -40px;
 }
-.display h2::after{
+
+.display h2::after {
     content: "-Frontend Developer";
     display: block;
     font-size: 12px;
@@ -1122,7 +1122,8 @@ body.intro-active .toTopbtn {
     font-family: "Manrope", sans-serif;
     margin-right: -800px;
 }
-.about h1{
+
+.about h1 {
     font-size: 700px;
     letter-spacing: 60px;
     margin-top: 40px;
@@ -1134,10 +1135,10 @@ body.intro-active .toTopbtn {
     filter: opacity(15%);
 }
 
-  @font-face {
+@font-face {
     font-family: 'Tulpen';
     src: url('TulpenOne-Regular.ttf') format('truetype');
-  }
+}
 
 .about-layout {
     display: grid;
@@ -1220,7 +1221,8 @@ body.intro-active .toTopbtn {
 .projects {
     padding-top: 8rem;
 }
-.projects h1{
+
+.projects h1 {
     font-size: 560px;
     letter-spacing: 20px;
     margin-top: 100px;
@@ -1241,15 +1243,20 @@ body.intro-active .toTopbtn {
 .project-card {
     overflow: hidden;
     border-radius: 28px;
-    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition) ;
-    /* transition: 1.5s; */
-
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 400ms ease,
+        filter 400ms ease;
+    z-index: 1;
+    will-change: transform;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(115, 255, 209, 0.18);
-    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px) scale(1.05);
+    border-color: rgba(115, 255, 209, 0.28);
+    box-shadow: 0 20px 48px rgba(79, 195, 255, 0.18);
+    filter: brightness(1.05);
+    background: rgba(4, 10, 15, 0.65);
+    border-color: rgba(115, 255, 209, 0.35);
 }
 
 .project-visual {
@@ -1257,7 +1264,7 @@ body.intro-active .toTopbtn {
     min-height: 17rem;
     padding: 1.2rem;
     overflow: hidden;
-    
+
 }
 
 .project-visual::before,
@@ -1276,7 +1283,8 @@ body.intro-active .toTopbtn {
         radial-gradient(circle at 76% 24%, rgba(79, 195, 255, 0.4), transparent 28%),
         linear-gradient(145deg, #102233, #061018); */
 }
-.visual-aurora img{
+
+.visual-aurora img {
     z-index: -1;
     width: 100%;
     border-radius: 14px;
@@ -1286,9 +1294,10 @@ body.intro-active .toTopbtn {
     justify-self: center;
     left: 0;
     top: -100px;
-    
+
 }
-.visual-aurora img:hover{
+
+.visual-aurora img:hover {
     filter: brightness(10%);
 }
 
@@ -1341,14 +1350,8 @@ body.intro-active .toTopbtn {
     color: var(--text);
     background: rgba(4, 10, 15, 0.42);
     backdrop-filter: blur(10px);
-    transition: background var(--transition), transform var(--transition), border-color var(--transition);
+    transition: background var(--transition), transform var(--transition), scale var(--transition), border-color var(--transition);
 
-}
-
-.project-card:hover {
-    /* transform: translateY(-4px); */
-    border-color: rgba(115, 255, 209, 0.32);
-    scale: 1.05;
 }
 
 .project-content {
@@ -1391,7 +1394,8 @@ body.intro-active .toTopbtn {
     gap: 1.6rem;
     align-items: start;
 }
-.skills h1{
+
+.skills h1 {
     font-size: 700px;
     letter-spacing: 40px;
     margin-top: 80px;
@@ -1432,7 +1436,7 @@ body.intro-active .toTopbtn {
     padding: 1.4rem;
 }
 
-.skill-item + .skill-item {
+.skill-item+.skill-item {
     margin-top: 1.15rem;
 }
 
@@ -1484,7 +1488,8 @@ body.intro-active .toTopbtn {
     /* width: 500px; */
     /* padding: 100px 2000px 10px 20px; */
 }
-.contacts{
+
+.contacts {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     /* flex-direction: column; */
@@ -1494,7 +1499,7 @@ body.intro-active .toTopbtn {
     position: relative;
 }
 
-.contact h1{
+.contact h1 {
     font-size: 500px;
     letter-spacing: 30px;
     margin-top: 150px;
@@ -1582,19 +1587,19 @@ body.intro-active .toTopbtn {
     margin-top: 0;
 }
 
-.contacts > .contact-note,
+.contacts>.contact-note,
 .contact-right {
     position: relative;
     z-index: 1;
 }
 
-.contacts > .contact-note {
+.contacts>.contact-note {
     display: flex;
     align-items: center;
     min-height: 100%;
 }
 
-.contacts > .contact-note > .contact-note {
+.contacts>.contact-note>.contact-note {
     font-size: clamp(1.7rem, 3vw, 2.5rem);
     line-height: 1.08;
     max-width: 22ch;
@@ -1605,7 +1610,8 @@ body.intro-active .toTopbtn {
     gap: 1rem;
     margin-top: 0.75rem;
 }
-.contact-right{
+
+.contact-right {
     display: grid;
     align-content: start;
     gap: 1rem;
@@ -1641,7 +1647,7 @@ body.intro-active .toTopbtn {
         0 14px 32px rgba(79, 195, 255, 0.12);
 }
 
-.contact-item > div {
+.contact-item>div {
     min-width: 0;
 }
 
@@ -1666,7 +1672,8 @@ body.intro-active .toTopbtn {
     color: var(--accent);
     margin-bottom: 0.3rem;
 }
-.contact-divider{
+
+.contact-divider {
     border: 0;
     background: linear-gradient(180deg, rgba(79, 195, 255, 0.16), rgba(115, 255, 209, 0.52), rgba(79, 195, 255, 0.16));
     position: absolute;
@@ -1762,7 +1769,7 @@ body.intro-active .toTopbtn {
     border-top: 0;
     overflow: hidden;
     height: auto;
-    
+
 }
 
 /* .site-footer::before {
@@ -1802,7 +1809,7 @@ body.intro-active .toTopbtn {
     gap: 1rem;
 }
 
-.container{
+.container {
     border: none;
 }
 
@@ -1816,6 +1823,7 @@ body.intro-active .toTopbtn {
     margin: 0 auto;
     text-align: center;
 }
+
 .footer-section h3 {
     font-family: "Syne", sans-serif;
     font-size: clamp(2rem, 4.8vw, 3.4rem);
@@ -2104,7 +2112,7 @@ body.has-cursor .cursor-ring {
 .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
-    
+
 }
 
 .typing-caret::after {
@@ -2134,6 +2142,7 @@ body.has-cursor .cursor-ring {
 }
 
 @keyframes pulse {
+
     0%,
     100% {
         opacity: 0.72;
@@ -2147,6 +2156,7 @@ body.has-cursor .cursor-ring {
 }
 
 @keyframes display-border-breathe {
+
     0%,
     100% {
         opacity: 0.22;
@@ -2156,13 +2166,12 @@ body.has-cursor .cursor-ring {
     50% {
         opacity: 1;
         filter:
-            brightness(1.35)
-            drop-shadow(0 0 10px rgba(115, 255, 209, 0.38))
-            drop-shadow(0 0 24px rgba(79, 195, 255, 0.28));
+            brightness(1.35) drop-shadow(0 0 10px rgba(115, 255, 209, 0.38)) drop-shadow(0 0 24px rgba(79, 195, 255, 0.28));
     }
 }
 
 @keyframes scroll-dot {
+
     0%,
     100% {
         opacity: 0;
@@ -2180,6 +2189,7 @@ body.has-cursor .cursor-ring {
 }
 
 @keyframes blink {
+
     0%,
     50% {
         opacity: 1;
@@ -2307,7 +2317,7 @@ body.has-cursor .cursor-ring {
         max-width: none;
     }
 
-    .contacts > .contact-note > .contact-note {
+    .contacts>.contact-note>.contact-note {
         max-width: 26ch;
     }
 
@@ -2598,7 +2608,7 @@ body.has-cursor .cursor-ring {
         font-size: 1.45rem;
     }
 
-    .contacts > .contact-note > .contact-note {
+    .contacts>.contact-note>.contact-note {
         max-width: none;
     }
 
@@ -2702,7 +2712,9 @@ body.has-cursor .cursor-ring {
     }
 }
 
-@media (hover: none), (pointer: coarse) {
+@media (hover: none),
+(pointer: coarse) {
+
     .cursor-dot,
     .cursor-ring,
     .spotlight {
@@ -2732,26 +2744,23 @@ body.has-cursor .cursor-ring {
     }
 }
 
-.site-footer{
-   border: 1px solid rgba(255, 255, 255, 0.1);
-   border-top: 0;
-   width: min(1240px, calc(100% - 1rem));
-   border-radius: 28px;
-   align-self: auto;
-   display: block;
-   justify-self: center;
-   justify-content: normal;
-   margin: 0 auto 1rem;
-   padding: clamp(2.5rem, 4vw, 3.4rem) 0 1.5rem;
-   backdrop-filter: blur(14px);
-   -webkit-backdrop-filter: blur(14px);
-   box-shadow:
-        0 22px 56px rgba(0, 0, 0, 0.32),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
-   background: rgba(8, 13, 20, 0.94);
+.site-footer {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 0;
+    width: min(1240px, calc(100% - 1rem));
+    border-radius: 28px;
+    align-self: auto;
+    display: block;
+    justify-self: center;
+    justify-content: normal;
+    margin: 0 auto 1rem;
+    padding: clamp(2.5rem, 4vw, 3.4rem) 0 1.5rem;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(8, 13, 20, 0.94);
 }
-.contact-methods{
+
+.contact-methods {
     display: flex;
     gap: 100px;
 }
- 
