@@ -77,6 +77,7 @@ const introDisp = document.querySelector(".intro-disp");
 const introDispRight = document.getElementById("disp-right");
 const introNameDisplay = document.getElementById("introNameDisplay");
 const introNote = document.querySelector(".intro-note");
+const isMobile = window.matchMedia("(max-width: 768px)");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -158,31 +159,62 @@ function playIntroSequence() {
     // introText.style.transition = "1.6s"
 
     // Intro Animations
-    window.setTimeout(() => {
-        const compactWelcome = window.innerWidth <= 560;
-        const narrowWelcome = window.innerWidth <= 700;
-        const welcomeScale = compactWelcome
-            ? Math.min(window.innerWidth * 0.42, 170)
-            : narrowWelcome
-                ? Math.min(window.innerWidth * 0.48, 250)
-                : 360;
-        const welcomeTracking = compactWelcome ? "0.1em" : narrowWelcome ? "0.14em" : "40px";
-        const welcomeOffset = compactWelcome ? "0px" : narrowWelcome ? "-18px" : "-90px";
-        const welcomeMarginTop = compactWelcome ? "16px" : narrowWelcome ? "24px" : "40px";
+    if (isMobile.matches) {
+        const imageInDelay = 140;
+        const loadDelay = 240
+        const dispInDelay = 140;
+        const dissolveDelay = 3200;
+        const siteRevealDelay = 3440;
+        const loadAnimation = document.getElementById("load");
 
-        introText.style.filter = "brightness(10%)"
-        introNameDisplay.style.letterSpacing = welcomeTracking
-        introText.style.filter = "opacity(10%)"
-        introText.style.transition = " .6s"
-        introNote.style.transition = "1.6s"
-        introNameDisplay.style.transition = "1.6s"
-        introNameDisplay.style.fontSize = `${welcomeScale}px`
-        // introNameDisplay.style.textAlign = "center"
-        introNameDisplay.style.marginLeft = welcomeOffset
-        introNote.style.filter = "opacity(0%)"
-        introText.style.marginTop = welcomeMarginTop
-        // introNote.style.filter = "brightness(5%)"
-    }, 3200);
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-image-in");
+        }, imageInDelay);
+
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-disp-in");
+            
+        }, dispInDelay);
+        window.setTimeout(() =>{
+            loadAnimation.style.width = "150px"
+        }, loadDelay)
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-dissolving");
+        }, dissolveDelay);
+
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-exiting");
+            body.classList.remove("intro-active");
+            revealHeroContent();
+        }, siteRevealDelay);
+    } else {
+        window.setTimeout(() => {
+            const compactWelcome = window.innerWidth <= 560;
+            const narrowWelcome = window.innerWidth <= 700;
+            const welcomeScale = compactWelcome
+                ? Math.min(window.innerWidth * 0.42, 170)
+                : narrowWelcome
+                    ? Math.min(window.innerWidth * 0.48, 250)
+                    : 360;
+            const welcomeTracking = compactWelcome ? "0.1em" : narrowWelcome ? "0.14em" : "40px";
+            const welcomeOffset = compactWelcome ? "0px" : narrowWelcome ? "-18px" : "-90px";
+            const welcomeMarginTop = compactWelcome ? "16px" : narrowWelcome ? "24px" : "40px";
+
+            introText.style.filter = "brightness(10%)"
+            introNameDisplay.style.letterSpacing = welcomeTracking
+            introText.style.filter = "opacity(10%)"
+            introText.style.transition = " .6s"
+            introNote.style.transition = "1.6s"
+            introNameDisplay.style.transition = "1.6s"
+            introNameDisplay.style.fontSize = `${welcomeScale}px`
+            // introNameDisplay.style.textAlign = "center"
+            introNameDisplay.style.marginLeft = welcomeOffset
+            introNote.style.filter = "opacity(0%)"
+            introText.style.marginTop = welcomeMarginTop
+            // introNote.style.filter = "brightness(5%)"
+        }, 3200);
+    }
+
 
     window.setTimeout(() => {
         introOverlay.classList.add("is-image-in");

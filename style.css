@@ -912,6 +912,19 @@ body.intro-active .toTopbtn {
     padding: 1rem;
     border-radius: var(--radius-sm);
 }
+.metric-card i {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(79,209,197,0.1);
+  color: #4fd1c5;
+  font-size: 18px;
+}
 
 .metric-card strong {
     display: block;
@@ -2552,20 +2565,20 @@ body.has-cursor .cursor-ring {
     }
 
     .intro-disp {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.75rem;
         margin-top: 0;
     }
 
     .intro-disp .divider {
-        width: 96px;
-        height: 0;
+        width: 0;
+        height: 96px;
     }
 
     #disp-right {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.45rem;
-        transform: translate3d(0, 54px, 0);
+        transform: translate3d(54px, 0px, 0);
     }
 
     .intro-text h1 {
@@ -2688,10 +2701,78 @@ body.has-cursor .cursor-ring {
 }
 
 @media (max-width: 420px) {
+    .hero{
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
     .intro-shell::after {
         inset: 3.5% 3%;
         border-radius: 20px;
     }
+    .intro-disp{
+        margin-top: -100px;
+    }
+    .intro-text{
+        display: none;
+    }
+    .intro-disp #introImg{
+        height: 150px;
+        width: 150px;
+    }
+    #disp-right h1{
+        font-size: 150px;
+    }
+    #load{
+        /* width: 150px; */
+        width: 0;
+        height: 0;
+        border: 2px solid rgba(46, 172, 235, 0.808);
+        box-shadow: 0px 0px 15px rgba(98, 198, 248, 0.897);
+        border-radius: 100px;
+        /* border-color: red; */
+        position: absolute;
+        bottom: -25px;
+        transition: 2s;
+        position: absolute;
+        left: 70px;
+    }
+    .hero-copy .eyebrow{
+        padding: 5px 10px 5px 10px;
+        font-size: 15px;
+    }  
+
+    .stage-primary{
+        width: 98%;
+        height: 220px;
+    }
+
+    .stage-float{
+        left: 170px;
+        position: absolute;
+        width: 100%;
+    }
+    .stage-float.bottom{
+        margin-bottom: 100px;
+        margin-left: 20px;
+    }
+
+    .stage-metrics{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 155px;
+        position: absolute;
+        left: 0;
+        gap: 1px;
+    }
+    .metric-card{
+        display: flex;
+        gap: 12px;
+    }
+
 
     .intro-text h1 {
         font-size: clamp(4rem, 19vw, 5.8rem);
@@ -2710,6 +2791,9 @@ body.has-cursor .cursor-ring {
     .intro-disp h1 {
         font-size: clamp(4.1rem, 18vw, 5.8rem);
     }
+}
+@media (max-width: 320px) {
+      
 }
 
 @media (hover: none),
