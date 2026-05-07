@@ -161,7 +161,7 @@ function playIntroSequence() {
     // Intro Animations
     if (isMobile.matches) {
         const imageInDelay = 140;
-        const loadDelay = 240
+        const loadDelay = 500
         const dispInDelay = 140;
         const dissolveDelay = 3200;
         const siteRevealDelay = 3440;

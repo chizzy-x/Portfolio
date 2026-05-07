@@ -912,18 +912,19 @@ body.intro-active .toTopbtn {
     padding: 1rem;
     border-radius: var(--radius-sm);
 }
+
 .metric-card i {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  background: rgba(79,209,197,0.1);
-  color: #4fd1c5;
-  font-size: 18px;
+    background: rgba(79, 209, 197, 0.1);
+    color: #4fd1c5;
+    font-size: 18px;
 }
 
 .metric-card strong {
@@ -1291,7 +1292,7 @@ body.intro-active .toTopbtn {
 }
 
 /* .visual-aurora {} */
-    /* background:
+/* background:
         radial-gradient(circle at 18% 18%, rgba(115, 255, 209, 0.32), transparent 26%),
         radial-gradient(circle at 76% 24%, rgba(79, 195, 255, 0.4), transparent 28%),
         linear-gradient(145deg, #102233, #061018); */
@@ -2701,31 +2702,37 @@ body.has-cursor .cursor-ring {
 }
 
 @media (max-width: 420px) {
-    .hero{
+    .hero {
         justify-content: center;
         justify-items: center;
         align-items: center;
         display: flex;
         flex-direction: column;
     }
+
     .intro-shell::after {
         inset: 3.5% 3%;
         border-radius: 20px;
     }
-    .intro-disp{
+
+    .intro-disp {
         margin-top: -100px;
     }
-    .intro-text{
+
+    .intro-text {
         display: none;
     }
-    .intro-disp #introImg{
+
+    .intro-disp #introImg {
         height: 150px;
         width: 150px;
     }
-    #disp-right h1{
+
+    #disp-right h1 {
         font-size: 150px;
     }
-    #load{
+
+    #load {
         /* width: 150px; */
         width: 0;
         height: 0;
@@ -2739,27 +2746,29 @@ body.has-cursor .cursor-ring {
         position: absolute;
         left: 70px;
     }
-    .hero-copy .eyebrow{
+
+    .hero-copy .eyebrow {
         padding: 5px 10px 5px 10px;
         font-size: 15px;
-    }  
+    }
 
-    .stage-primary{
+    .stage-primary {
         width: 98%;
         height: 220px;
     }
 
-    .stage-float{
+    .stage-float {
         left: 170px;
         position: absolute;
         width: 100%;
     }
-    .stage-float.bottom{
+
+    .stage-float.bottom {
         margin-bottom: 100px;
         margin-left: 20px;
     }
 
-    .stage-metrics{
+    .stage-metrics {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -2768,7 +2777,8 @@ body.has-cursor .cursor-ring {
         left: 0;
         gap: 1px;
     }
-    .metric-card{
+
+    .metric-card {
         display: flex;
         gap: 12px;
     }
@@ -2783,17 +2793,47 @@ body.has-cursor .cursor-ring {
         font-size: 0.86rem;
     }
 
-    .intro-disp img {
-        width: 156px;
-        height: 156px;
-    }
+
 
     .intro-disp h1 {
         font-size: clamp(4.1rem, 18vw, 5.8rem);
     }
 }
+
 @media (max-width: 320px) {
-      
+    body {
+        /* overflow: hidden; */
+    }
+
+    .stage-float.top {
+        left: 0;
+        scale: 0.9;
+    }
+
+    .stage-float.bottom {
+        scale: 0.9;
+        left: 100px;
+    }
+
+    .toTopbtn {
+        right: 100px;
+    }
+    .intro-disp{
+        justify-self: center;
+        margin-left: -90px;
+    }
+    #load{
+        left: 40px;
+    }
+
+    .intro-disp #introImg {
+        height: 110px;
+        width: 110px;
+    }
+
+    #disp-right h1 {
+        font-size: 100px;
+    }
 }
 
 @media (hover: none),
