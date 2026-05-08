@@ -2798,6 +2798,35 @@ body.has-cursor .cursor-ring {
     .intro-disp h1 {
         font-size: clamp(4.1rem, 18vw, 5.8rem);
     }
+    .stage-float.top {
+        left: 0;
+        scale: 0.9;
+    }
+
+    .stage-float.bottom {
+        scale: 0.9;
+        left: 100px;
+    }
+
+    .toTopbtn {
+        right: 100px;
+    }
+    .intro-disp{
+        justify-self: center;
+        margin-left: -90px;
+    }
+    #load{
+        left: 40px;
+    }
+
+    .intro-disp #introImg {
+        height: 110px;
+        width: 110px;
+    }
+
+    #disp-right h1 {
+        font-size: 100px;
+    }
 }
 
 @media (max-width: 320px) {
