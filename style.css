@@ -2814,6 +2814,7 @@ body.has-cursor .cursor-ring {
     .intro-disp{
         justify-self: center;
         margin-left: -90px;
+        margin-top: -40px;
     }
     #load{
         left: 40px;
