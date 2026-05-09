@@ -2816,8 +2816,8 @@ body.has-cursor .cursor-ring {
     }
     .intro-disp{
         justify-self: center;
-        margin-left: -90px;
-        margin-top: 10px;
+        /* margin-left: -90px; */
+        margin-top: -40px;
     }
     #load{
         left: 40px;
@@ -2882,9 +2882,9 @@ body.has-cursor .cursor-ring {
 
 @media (prefers-reduced-motion: reduce) {
     html {
-        scroll-behavior: auto;
+        scroll-behavior: smooth;
     }
-
+/* 
     *,
     *::before,
     *::after {
@@ -2892,7 +2892,7 @@ body.has-cursor .cursor-ring {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
-    }
+    } */
 
     .reveal,
     .hero-title .word {
