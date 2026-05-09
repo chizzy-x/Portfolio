@@ -2808,7 +2808,7 @@ body.has-cursor .cursor-ring {
 
     .stage-float.bottom {
         scale: 0.9;
-        left: 200px;
+        left: 180px;
     }
 
     .toTopbtn {
@@ -2845,6 +2845,7 @@ body.has-cursor .cursor-ring {
 
     .stage-float.bottom {
         scale: 0.9;
+        left: 120px;
 
     }
 
