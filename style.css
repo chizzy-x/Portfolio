@@ -2708,7 +2708,6 @@ body.has-cursor .cursor-ring {
 }
 
 @media (max-width: 420px) {
-  */
     .hero {
         justify-content: center;
         justify-items: center;
@@ -2844,12 +2843,12 @@ body.has-cursor .cursor-ring {
 
     .stage-float.top {
         left: 0;
-        scale: 0.9;
+        scale: 0.8;
     }
 
     .stage-float.bottom {
-        scale: 0.9;
-        left: 120px;
+        scale: 0.8;
+        left: 100px;
 
     }
 
@@ -2871,6 +2870,60 @@ body.has-cursor .cursor-ring {
 
     #disp-right h1 {
         font-size: 100px;
+    }
+
+        .hero {
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .intro-shell::after {
+        inset: 3.5% 3%;
+        border-radius: 20px;
+    }
+
+    .hero-copy .eyebrow {
+        padding: 5px 10px 5px 10px;
+        font-size: 15px;
+    }
+
+    .stage-primary {
+        width: 98%;
+        height: 220px;
+    }
+
+    .stage-float {
+        left: 170px;
+        position: absolute;
+        width: 100%;
+    }
+
+    .stage-metrics {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 155px;
+        position: absolute;
+        left: 0;
+        gap: 1px;
+    }
+
+    .metric-card {
+        display: flex;
+        gap: 12px;
+    }
+
+
+    .intro-text h1 {
+        font-size: clamp(4rem, 19vw, 5.8rem);
+    }
+
+    .intro-note {
+        max-width: 17.5rem;
+        font-size: 0.86rem;
     }
 }
 
