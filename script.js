@@ -535,6 +535,7 @@ function closeModal() {
     }
 }
 
+
 // Make each project card keyboard friendly and clickable.
 function setupProjects() {
     projectCards.forEach((card) => {
