@@ -150,11 +150,11 @@ function playIntroSequence() {
     // const imageInDelay = 140;
     // const dispInDelay = 1420;
     // const textInDelay = 2840;
-    const imageInDelay = 3500;
-    const dispInDelay = 3700;
-    const textInDelay = 140;
-    const dissolveDelay = 6200;
-    const siteRevealDelay = 6440;
+    const imageInDelay = 140;
+    const dispInDelay = 700;
+    const textInDelay = 900;
+    const dissolveDelay = 2500;
+    const siteRevealDelay = 2840;
 
     // introText.style.transition = "1.6s"
 
@@ -200,20 +200,23 @@ function playIntroSequence() {
             const welcomeOffset = compactWelcome ? "0px" : narrowWelcome ? "-18px" : "-90px";
             const welcomeMarginTop = compactWelcome ? "16px" : narrowWelcome ? "24px" : "40px";
 
-            introText.style.filter = "brightness(10%)"
-            introNameDisplay.style.letterSpacing = welcomeTracking
-            introText.style.filter = "opacity(10%)"
-            introText.style.transition = " .6s"
-            introNote.style.transition = "1.6s"
-            introNameDisplay.style.transition = "1.6s"
-            introNameDisplay.style.fontSize = `${welcomeScale}px`
+            // introText.style.filter = "brightness(10%)"
+            // introNameDisplay.style.letterSpacing = welcomeTracking
+            // introText.style.filter = "opacity(10%)"
+            // introText.style.transition = " .6s"
+            // introNameDisplay.style.transition = "1.6s"
+            // introNameDisplay.style.fontSize = "380px"
             // introNameDisplay.style.textAlign = "center"
-            introNameDisplay.style.marginLeft = welcomeOffset
-            introNote.style.filter = "opacity(0%)"
-            introText.style.marginTop = welcomeMarginTop
+            // introNameDisplay.style.marginLeft = "-108px"
+            // introText.style.marginTop = "800px"
             // introNote.style.filter = "brightness(5%)"
-        }, 3200);
+        }, 1500);
     }
+
+    // window.setTimeout(() => {
+    //     introNote.style.transition = "1.6s"
+    //     introNote.style.filter = "opacity(70%)"
+    // }, imageInDelay);
 
 
     window.setTimeout(() => {
@@ -262,21 +265,6 @@ function setActiveLink(id) {
 
 function setHeaderState() {
     header.classList.toggle("scrolled", window.scrollY > 16);
-}
-
-// Animate each skill bar only once when it scrolls into view.
-function animateSkillBar(item) {
-    if (item.dataset.animated === "true") {
-        return;
-    }
-
-    const level = item.getAttribute("data-level");
-    const fill = item.querySelector(".skill-fill");
-
-    if (fill) {
-        fill.style.width = `${level}%`;
-        item.dataset.animated = "true";
-    }
 }
 
 function animateCounter(element) {
@@ -343,10 +331,6 @@ function createRevealObserver() {
     if (prefersReducedMotion) {
         scrollDrivenItems.forEach((item) => {
             item.classList.add("revealed");
-
-            if (item.classList.contains("skill-item")) {
-                animateSkillBar(item);
-            }
 
             const counter = item.querySelector("[data-count]");
             if (counter) {
@@ -420,15 +404,6 @@ function createRevealObserver() {
             if (item.classList.contains("display")) {
                 item.style.setProperty("--display-scale", (0.9 + renderProgress * 0.1).toFixed(3));
                 item.style.setProperty("--display-rotate", `${((1 - renderProgress) * -4.5).toFixed(2)}deg`);
-            }
-
-            if (item.classList.contains("skill-item")) {
-                const fill = item.querySelector(".skill-fill");
-                const level = Number(item.getAttribute("data-level")) || 0;
-
-                if (fill) {
-                    fill.style.width = `${(level * renderProgress).toFixed(1)}%`;
-                }
             }
 
             const counter = item.querySelector("[data-count]");

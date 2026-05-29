@@ -30,13 +30,11 @@
 
         <div class="intro-shell">
             <div class="intro-text">
-                <h1 class="intro-name-display" id="introNameDisplay">
+                <!-- <h1 class="intro-name-display" id="introNameDisplay">
                     WELCOME
-                </h1>
+                </h1> -->
 
-                <p class="intro-note">
-                    Welcome in. Step into a frontend portfolio shaped with motion, atmosphere, and detail.
-                </p>
+                <p class="intro-note">Designing Interfaces that feel alive. </p>
             </div>
             <div class="intro-disp">
                 <img src="1757324652931.jpg" alt="Profile picture" id="introImg">
@@ -81,14 +79,13 @@
 
             <div class="container hero-layout">
                 <div class="hero-copy">
-                        <!-- <p class="eyebrow reveal" id="heroGreeting">
-                            <span class="eyebrow-prefix">Hi, I'm</span>
-                            <span class="eyebrow-name" id="heroNameInline">CFX</span>
-                            <span class="eyebrow-suffix">, a front end developer.</span>
-                        </p> -->
+                    <div class="hero-status reveal" id="heroGreeting">
+                        <span class="dot" aria-hidden="true"></span>
+                        <span class="eyebrow">WELCOME</span>
+                    </div>
                     <h1 class="hero-title" data-split>
                         <!-- Designing interfaces that feel alive. -->
-                         Hi, I'm <span style="color: red;">CFX</span> a Frontend developer
+                        Hi, I'm <span>CFX</span> a Frontend developer
                     </h1>
                     <p class="hero-subtitle reveal delay-1">
                         I build interactive web experiences with cinematic motion,
@@ -101,8 +98,8 @@
                     </div>
 
                     <ul class="hero-signals reveal delay-3" aria-label="Highlights">
-                        <li><span>04+</span> years crafting polished product interfaces</li>
-                        <li><span>18</span> shipped launches across web and brand</li>
+                        <li><span>02+</span> years crafting polished product interfaces</li>
+                        <li><span>08</span> shipped launches across web and brand</li>
                         <li><span>100%</span> hand-coded in HTML, CSS, and JavaScript</li>
                     </ul>
                 </div>
@@ -135,7 +132,7 @@
                                     <i class="ri-device-line" class="icon"></i>
                                     <div class="metric-text">
                                         <strong>Responsive</strong>
-                                        <span>Layouts tuned for every screen size.<span>
+                                        <span>Layouts tuned for every screen size.</span>
                                     </div>
                                 </div>
                             </div>
@@ -209,11 +206,11 @@
                             <h3>Performance, clarity, accessibility, and visual confidence.</h3>
                         </article>
                         <article class="stat-card reveal">
-                            <strong data-count="18">0</strong>
+                            <strong data-count="6">0</strong>
                             <span>projects launched</span>
                         </article>
                         <article class="stat-card reveal">
-                            <strong data-count="12">0</strong>
+                            <strong data-count="4">0</strong>
                             <span>design systems refined</span>
                         </article>
                     </div>
@@ -303,59 +300,72 @@
 
                 <div class="skills-layout">
                     <div class="skills-copy reveal">
-                        <p>
-                            I like interfaces that look expensive and still load fast. My workflow
-                            is equal parts visual design sense and implementation discipline.
+                        <div class="skills-copy-top">
+                            <span class="skills-orbit" aria-hidden="true"><i class="ri-reactjs-line"></i></span>
+                            <div>
+                                <p class="skills-label">Frontend Toolkit</p>
+                                <h3>Building polished interfaces from structure to motion.</h3>
+                            </div>
+                        </div>
+
+                        <p class="skills-lead">
+                            I shape clean, responsive UIs with a strong eye for layout, interaction,
+                            performance, and reusable React-ready patterns.
                         </p>
+
+                        <div class="skill-focus-list" aria-label="Skill focus areas">
+                            <div class="skill-focus">
+                                <i class="ri-layout-masonry-line" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Layout Systems</strong>
+                                    <span>Responsive sections, strong spacing, and clean visual hierarchy.</span>
+                                </div>
+                            </div>
+
+                            <div class="skill-focus">
+                                <i class="ri-code-box-line" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Component Thinking</strong>
+                                    <span>Reusable UI patterns with HTML, CSS, JavaScript, and React.js.</span>
+                                </div>
+                            </div>
+
+                            <div class="skill-focus">
+                                <i class="ri-flashlight-line" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Motion Polish</strong>
+                                    <span>Subtle animation that makes the interface feel smooth and alive.</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="skill-pills">
                             <span>Semantic HTML</span>
                             <span>Modern CSS</span>
                             <span>Vanilla JavaScript</span>
+                            <span>React.js</span>
                             <span>Accessibility</span>
                             <span>Performance</span>
                             <span>Interaction Design</span>
                         </div>
                     </div>
 
-                    <div class="skills-panel">
-                        <div class="skill-item reveal" data-level="96">
-                            <div class="skill-meta">
-                                <strong>HTML</strong>
-                                <span>96%</span>
-                            </div>
-                            <div class="skill-track"><span class="skill-fill"></span></div>
+                    <div class="skills-panel skill-cloud reveal" aria-labelledby="skillCloudTitle">
+                        <div class="skill-cloud-head">
+                            <span>Core Stack</span>
+                            <h3 id="skillCloudTitle">Tools I reach for when the interface needs to feel sharp.</h3>
                         </div>
 
-                        <div class="skill-item reveal" data-level="94">
-                            <div class="skill-meta">
-                                <strong>CSS</strong>
-                                <span>94%</span>
-                            </div>
-                            <div class="skill-track"><span class="skill-fill"></span></div>
-                        </div>
-
-                        <div class="skill-item reveal" data-level="90">
-                            <div class="skill-meta">
-                                <strong>JavaScript</strong>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-track"><span class="skill-fill"></span></div>
-                        </div>
-
-                        <div class="skill-item reveal" data-level="88">
-                            <div class="skill-meta">
-                                <strong>UI Animation</strong>
-                                <span>88%</span>
-                            </div>
-                            <div class="skill-track"><span class="skill-fill"></span></div>
-                        </div>
-
-                        <div class="skill-item reveal" data-level="84">
-                            <div class="skill-meta">
-                                <strong>Accessibility</strong>
-                                <span>84%</span>
-                            </div>
-                            <div class="skill-track"><span class="skill-fill"></span></div>
+                        <div class="skill-cloud-grid">
+                            <span class="skill-chip skill-chip-large"><i class="ri-html5-line"></i>HTML</span>
+                            <span class="skill-chip"><i class="ri-css3-line"></i>CSS</span>
+                            <span class="skill-chip skill-chip-wide"><i class="ri-javascript-line"></i>JavaScript</span>
+                            <span class="skill-chip skill-chip-large"><i class="ri-reactjs-line"></i>React.js</span>
+                            <span class="skill-chip"><i class="ri-magic-line"></i>UI Animation</span>
+                            <span class="skill-chip skill-chip-wide"><i class="ri-layout-4-line"></i>Responsive UI</span>
+                            <span class="skill-chip"><i class="ri-speed-up-line"></i>Performance</span>
+                            <span class="skill-chip skill-chip-large"><i class="ri-accessibility-line"></i>Accessibility</span>
+                            <span class="skill-chip"><i class="ri-git-branch-line"></i>Git</span>
                         </div>
                     </div>
                 </div>
@@ -409,7 +419,7 @@
                                 <div class="social-row reveal delay-1">
                                     <p class="social-label">Connect with me</p>
                                     <div class="social-links">
-                                        <a href="#" aria-label="GitHub profile" class="social-icon"><i
+                                        <a href="chizz.git" aria-label="GitHub profile" class="social-icon"><i
                                                 class="ri-github-fill"></i></a>
                                         <a href="#" aria-label="LinkedIn profile" class="social-icon"><i
                                                 class="ri-linkedin-fill"></i></a>
@@ -433,18 +443,36 @@
         </section>
     </main>
 
-    <footer class="site-footer" style="border: none;">
+    <footer class="site-footer">
         <div class="container footer-content">
             <div class="footer-layout">
                 <div class="footer-section reveal">
-                    <h3>CFX</h3>
-                    <p>Crafted with pure HTML, CSS, and vanilla JavaScript—no frameworks, no bloat. Just clean, fast
-                        frontend code.</p>
+                    <span class="footer-kicker">CFX Portfolio</span>
+                    <h3>Clean frontend work with presence, speed, and polish.</h3>
+                    <p>
+                        Crafted with HTML, CSS, JavaScript, and React-ready thinking for web experiences
+                        that feel intentional on every screen.
+                    </p>
+                </div>
+
+                <div class="footer-actions reveal delay-1">
+                    <a class="footer-link-btn" href="mailto:chisombrnrd@gmail.com">
+                        <i class="ri-mail-line" aria-hidden="true"></i>
+                        Start a Project
+                    </a>
+                    <a class="footer-link-btn footer-link-secondary" href="#projects">
+                        <i class="ri-folder-open-line" aria-hidden="true"></i>
+                        View Work
+                    </a>
                 </div>
             </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2026 CFX. All rights reserved. Designed and developed by CFX.</p>
+                <a href="#top" aria-label="Back to top">
+                    <i class="ri-arrow-up-line" aria-hidden="true"></i>
+                    Top
+                </a>
             </div>
         </div>
     </footer>
