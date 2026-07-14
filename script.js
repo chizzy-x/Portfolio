@@ -1,55 +1,3 @@
-// Project details for the modal popup.
-const projects = {
-    aurora: {
-        title: "ExamPrepHub",
-        visualClass: "visual-aurora",
-        description:
-            "ExamPrepHub is a web-based platform that helps students prepare for exams like JAMB, WAEC, and NECO through structured, syllabus-based topics.It provides clear notes, definitions, and practical tips to make studying easier and more focused.Designed for simplicity, it helps students know exactly what to read and study smarter.",
-        features: [
-            "Immersive hero-to-product storytelling",
-            "Animated product reveal states",
-            "Responsive product grid and cart journey",
-            "High-contrast UI tuned for dark mode",
-            "Micro-interactions that guide attention"
-        ],
-        tech: ["HTML", "CSS", "JavaScript", "Responsive UI", "Motion Design"],
-        live: "https://examphb.netlify.app/",
-        source: "#"
-    },
-    atlas: {
-        title: "Atlas Metrics",
-        visualClass: "visual-atlas",
-        description:
-            "A data dashboard built for fast scanning and clear hierarchy. The interface mixes crisp panels, animated counters, and restrained glow accents so the information feels sharp instead of overwhelming.",
-        features: [
-            "Live KPI cards with animated updates",
-            "Color-coded data grouping for easier scanning",
-            "Modular panel layout for desktop and mobile",
-            "Smooth transitions between chart states",
-            "Visual emphasis on priority metrics"
-        ],
-        tech: ["JavaScript", "Dashboards", "Interaction Design", "Accessibility"],
-        live: "#",
-        source: "#"
-    },
-    lumen: {
-        title: "Lumen Studio",
-        visualClass: "visual-lumen",
-        description:
-            "An editorial-style portfolio for a creative studio. The layout leans into pace, whitespace, and typography so each section feels curated while still staying easy to navigate on any screen size.",
-        features: [
-            "Scroll-led storytelling with section pacing",
-            "Editorial typography and layered backgrounds",
-            "Project spotlights with modal deep dives",
-            "Mobile-first responsive refinement",
-            "Elegant contact pathway for client outreach"
-        ],
-        tech: ["Portfolio Design", "CSS Animation", "Frontend Architecture", "Brand UI"],
-        live: "#",
-        source: "#"
-    }
-};
-
 const body = document.body;
 const header = document.querySelector(".site-header");
 const navToggle = document.getElementById("navToggle");
@@ -58,10 +6,6 @@ const navLinks = document.querySelectorAll(".nav-link");
 const toTopBtn = document.getElementById("toTopbtn");
 const sections = document.querySelectorAll("main section[id]");
 const revealItems = document.querySelectorAll(".reveal");
-const projectCards = document.querySelectorAll(".project-card");
-const modal = document.getElementById("projectModal");
-const modalContent = document.getElementById("modalContent");
-const modalClose = document.getElementById("modalClose");
 const typedIntro = document.getElementById("typedIntro");
 const heroTitle = document.querySelector("[data-split]");
 const spotlight = document.getElementById("spotlight");
@@ -82,7 +26,6 @@ const isMobile = window.matchMedia("(max-width: 768px)");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-let activeProjectTrigger = null;
 let typedIntroStarted = false;
 
 // Split the hero heading into words so we can animate them in a staggered way.
@@ -299,29 +242,33 @@ function typeIntroText() {
 
     typedIntroStarted = true;
     const text = typedIntro.textContent.trim();
-    typedIntro.textContent = "";
-    typedIntro.classList.add("typing-caret");
 
     if (prefersReducedMotion) {
         typedIntro.textContent = text;
-        typedIntro.classList.remove("typing-caret");
+        typedIntro.classList.add("intro-text-reveal", "is-active");
         return;
     }
 
-    let index = 0;
+    const fragment = document.createDocumentFragment();
+    text.split(" ").forEach((word, index, words) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "intro-word";
+        wordSpan.style.setProperty("--word-index", index);
+        wordSpan.textContent = word;
+        fragment.appendChild(wordSpan);
 
-    const writeCharacter = () => {
-        typedIntro.textContent += text.charAt(index);
-        index += 1;
-
-        if (index < text.length) {
-            window.setTimeout(writeCharacter, 34);
-        } else {
-            typedIntro.classList.remove("typing-caret");
+        if (index < words.length - 1) {
+            fragment.appendChild(document.createTextNode(" "));
         }
-    };
+    });
 
-    writeCharacter();
+    typedIntro.textContent = "";
+    typedIntro.appendChild(fragment);
+    typedIntro.classList.add("intro-text-reveal");
+
+    requestAnimationFrame(() => {
+        typedIntro.classList.add("is-active");
+    });
 }
 
 // Reveal sections on scroll and trigger any matching animations.
@@ -456,103 +403,6 @@ function createSectionObserver() {
     sections.forEach((section) => observer.observe(section));
 }
 
-// Build modal markup from the selected project data.
-function populateModal(projectKey) {
-    const project = projects[projectKey];
-
-    if (!project) {
-        return;
-    }
-
-    modalContent.innerHTML = `
-        <div class="modal-visual ${project.visualClass}" aria-hidden="true"></div>
-        <div>
-            <p class="section-kicker">Case Study</p>
-            <h3 class="modal-title" id="modalTitle">${project.title}</h3>
-        </div>
-        <p class="modal-description">${project.description}</p>
-        <div class="modal-section">
-            <h4>Highlights</h4>
-            <ul class="modal-list">
-                ${project.features.map((feature) => `<li>${feature}</li>`).join("")}
-            </ul>
-        </div>
-        <div class="modal-section">
-            <h4>Stack</h4>
-            <div class="modal-tech">
-                ${project.tech.map((item) => `<span>${item}</span>`).join("")}
-            </div>
-        </div>
-        <div class="modal-links">
-            <a href="${project.live}" data-placeholder-link>Live Preview</a>
-            <a href="${project.source}" data-placeholder-link>Source Notes</a>
-        </div>
-    `;
-}
-
-function openModal(projectKey, trigger) {
-    populateModal(projectKey);
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    body.classList.add("modal-open");
-    activeProjectTrigger = trigger || null;
-}
-
-function closeModal() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    body.classList.remove("modal-open");
-    modalContent.innerHTML = "";
-
-    if (activeProjectTrigger) {
-        activeProjectTrigger.focus();
-        activeProjectTrigger = null;
-    }
-}
-
-
-// Make each project card keyboard friendly and clickable.
-function setupProjects() {
-    projectCards.forEach((card) => {
-        const projectKey = card.getAttribute("data-project");
-        const trigger = card.querySelector(".project-trigger");
-        const projectTitle = projects[projectKey]?.title || "project";
-
-        card.setAttribute("tabindex", "0");
-        card.setAttribute("role", "button");
-        card.setAttribute("aria-label", `Open details for ${projectTitle}`);
-
-        const openCardModal = () => openModal(projectKey, trigger || card);
-
-        card.addEventListener("click", (event) => {
-            if (event.target.closest(".project-trigger")) {
-                openCardModal();
-                return;
-            }
-
-            openCardModal();
-        });
-
-        card.addEventListener("keydown", (event) => {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                openCardModal();
-            }
-        });
-    });
-
-    modalClose.addEventListener("click", closeModal);
-    modal.addEventListener("click", (event) => {
-        if (event.target.hasAttribute("data-close-modal")) {
-            closeModal();
-        }
-
-        // if (event.target.matches("[data-placeholder-link]")) {
-        //     event.preventDefault();
-        // }
-    });
-}
-
 // Enhance the experience on desktop with a soft spotlight and custom cursor.
 function setupToTopButton() {
     if (!toTopBtn) {
@@ -631,10 +481,6 @@ function setupEvents() {
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             toggleMenu(false);
-
-            if (modal.classList.contains("is-open")) {
-                closeModal();
-            }
         }
     });
 }
@@ -644,7 +490,6 @@ function initializePage() {
     setHeaderState();
     createRevealObserver();
     createSectionObserver();
-    setupProjects();
     setupCursorAndSpotlight();
     setupToTopButton();
     setupEvents();
@@ -652,4 +497,3 @@ function initializePage() {
 }
 
 initializePage();
-
