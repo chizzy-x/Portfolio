@@ -485,6 +485,44 @@ function setupEvents() {
     });
 }
 
+// CV Modal functionality
+function initCVModal() {
+    const cvImage = document.getElementById("cvImageTrigger");
+    const cvModal = document.getElementById("cvModal");
+    const cvModalClose = document.getElementById("cvModalClose");
+
+    if (!cvImage || !cvModal || !cvModalClose) return;
+
+    // Close modal function
+    const closeCVModal = () => {
+        cvModal.classList.remove("active");
+        document.body.style.overflow = "";
+    };
+
+    // Open modal
+    cvImage.addEventListener("click", () => {
+        cvModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+
+    // Close button
+    cvModalClose.addEventListener("click", closeCVModal);
+
+    // Close on outside click
+    cvModal.addEventListener("click", (event) => {
+        if (event.target === cvModal) {
+            closeCVModal();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && cvModal.classList.contains("active")) {
+            closeCVModal();
+        }
+    });
+}
+
 // Initialize all visual behavior once the DOM is ready.
 function initializePage() {
     setHeaderState();
@@ -493,6 +531,7 @@ function initializePage() {
     setupCursorAndSpotlight();
     setupToTopButton();
     setupEvents();
+    initCVModal();
     playIntroSequence();
 }
 

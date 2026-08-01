@@ -167,14 +167,17 @@
                 </div>
 
                 <div class="about-layout">
-                    <div class="display reveal delay-1">
-                        <div class="display-img-wrapper">
+                    <div class="floating-pill reveal delay-1" role="region" aria-label="Profile">
+                        <div class="pill-image-wrapper">
                             <img src="1757324652931.jpg" alt="Profile Image">
                         </div>
-                        <h2>I'm CHIZZY</h2><br>
-
+                        <div class="pill-content">
+                            <h2>I'm CHIZZY</h2>
+                            <span class="pill-subtitle">Frontend Developer</span>
+                        </div>
                     </div>
                     <div class="about-story reveal">
+                        <h3 class="about-story-header">About My Craft</h3>
                         <p class="about-lead" id="typedIntro">
                             I turn product ideas into immersive interfaces that still feel effortless to use.
                         </p>
@@ -267,6 +270,27 @@
                                 <span>JavaScript</span>
                             </div>
                             <a href="https://chizzy-x.github.io/NOIR/" target="_blank" class="noir-button">Visit Live Site</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card sabor-card reveal" data-project="sabor">
+                        <div class="project-visual visual-sabor">
+                            <span class="sabor-placeholder">🍽</span>
+                        </div>
+                        <div class="project-content sabor-content">
+                            <div class="sabor-header">
+                                <span class="sabor-category">Hospitality / Web Design Concept</span>
+                                <h3>Sabor</h3>
+                            </div>
+                            <p>
+                                A restaurant brand redesign for a real Lagos business. Rebuilt from a broken, generic website into a full concept site with a signature menu, atmosphere gallery, and a working WhatsApp-integrated reservation flow.
+                            </p>
+                            <div class="project-tags sabor-tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <a href="https://chizzy-x.github.io/Sabor/" target="_blank" class="sabor-button">Visit Live Site</a>
                         </div>
                     </article>
 
@@ -447,38 +471,64 @@
                 </div>
             </div>
         </section>
+        <!-- CV Section -->
+        <section class=\"cv-section section\" id=\"cv\">
+            <div class=\"container section-shell\">
+                <div class=\"section-heading reveal\">
+                    <p class=\"section-kicker\">CV</p>
+                    <h2>Download my resume and credentials.</h2>
+                </div>
+
+                <div class=\"cv-container\">
+                    <div class=\"cv-card reveal\">
+                        <div class=\"cv-image-wrapper\">
+                            <img src=\"1757324652931.jpg\" alt=\"CV Preview\" class=\"cv-image\" id=\"cvImageTrigger\" style=\"cursor: pointer;\">
+                        </div>
+                        <div class=\"cv-content\">
+                            <h3>Chisom Bermard — Frontend Developer</h3>
+                            <p>Download my full CV to see my complete experience, certifications, and technical background.</p>
+                            <a href=\"#\" class=\"cv-download-btn\" target=\"_blank\">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV Modal -->
+        <div class=\"cv-modal\" id=\"cvModal\">
+            <div class=\"cv-modal-content\">
+                <img src=\"1757324652931.jpg\" alt=\"CV Full View\" class=\"cv-modal-image\">
+                <button class=\"cv-modal-close\" id=\"cvModalClose\" aria-label=\"Close CV Modal\">&times;</button>
+            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
         <div class="container footer-content">
-            <div class="footer-layout">
-                <div class="footer-section reveal">
-                    <span class="footer-kicker">CFX Portfolio</span>
-                    <h3>Clean frontend work with presence, speed, and polish.</h3>
-                    <p>
-                        Crafted with HTML, CSS, JavaScript, and React-ready thinking for web experiences
-                        that feel intentional on every screen.
-                    </p>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h2>CFX</h2>
+                    <p>Frontend Developer & Creative Technologist</p>
                 </div>
-
-                <div class="footer-actions reveal delay-1">
-                    <a class="footer-link-btn" href="mailto:chisombrnrd@gmail.com">
-                        <i class="ri-mail-line" aria-hidden="true"></i>
-                        Start a Project
-                    </a>
-                    <a class="footer-link-btn footer-link-secondary" href="#projects">
-                        <i class="ri-folder-open-line" aria-hidden="true"></i>
-                        View Work
-                    </a>
+                <div class="footer-links">
+                    <div class="footer-link-group">
+                        <h4>Quick Links</h4>
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#projects">Projects</a>
+                        <a href="#skills">Skills</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>Connect</h4>
+                        <a href="https://github.com/chizzy-x" target="_blank">GitHub</a>
+                        <a href="https://www.linkedin.com/in/chisom-bermard-a960a83a4" target="_blank">LinkedIn</a>
+                        <a href="https://x.com/Chizzy_X_" target="_blank">Twitter</a>
+                        <a href="mailto:chisombrnrd@gmail.com">Email</a>
+                    </div>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 CFX. All rights reserved. Designed and developed by CFX.</p>
-                <a href="#top" aria-label="Back to top">
-                    <i class="ri-arrow-up-line" aria-hidden="true"></i>
-                    Top
-                </a>
+                <p>&copy; 2026 CFX. All rights reserved. Designed and developed by Chisom Bermard.</p>
             </div>
         </div>
     </footer>
