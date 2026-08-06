@@ -90,21 +90,15 @@ function playIntroSequence() {
         return;
     }
 
-    // const imageInDelay = 140;
-    // const dispInDelay = 1420;
-    // const textInDelay = 2840;
     const imageInDelay = 140;
     const dispInDelay = 700;
     const textInDelay = 900;
     const dissolveDelay = 2500;
     const siteRevealDelay = 2840;
 
-    // introText.style.transition = "1.6s"
-
-    // Intro Animations
     if (isMobile.matches) {
         const imageInDelay = 140;
-        const loadDelay = 500
+        const loadDelay = 500;
         const dispInDelay = 140;
         const dissolveDelay = 3200;
         const siteRevealDelay = 3440;
@@ -116,11 +110,14 @@ function playIntroSequence() {
 
         window.setTimeout(() => {
             introOverlay.classList.add("is-disp-in");
-            
         }, dispInDelay);
-        window.setTimeout(() =>{
-            loadAnimation.style.width = "150px"
-        }, loadDelay)
+
+        window.setTimeout(() => {
+            if (loadAnimation) {
+                loadAnimation.style.width = "150px";
+            }
+        }, loadDelay);
+
         window.setTimeout(() => {
             introOverlay.classList.add("is-dissolving");
         }, dissolveDelay);
@@ -132,61 +129,31 @@ function playIntroSequence() {
         }, siteRevealDelay);
     } else {
         window.setTimeout(() => {
-            const compactWelcome = window.innerWidth <= 560;
-            const narrowWelcome = window.innerWidth <= 700;
-            const welcomeScale = compactWelcome
-                ? Math.min(window.innerWidth * 0.42, 170)
-                : narrowWelcome
-                    ? Math.min(window.innerWidth * 0.48, 250)
-                    : 360;
-            const welcomeTracking = compactWelcome ? "0.1em" : narrowWelcome ? "0.14em" : "40px";
-            const welcomeOffset = compactWelcome ? "0px" : narrowWelcome ? "-18px" : "-90px";
-            const welcomeMarginTop = compactWelcome ? "16px" : narrowWelcome ? "24px" : "40px";
+            introOverlay.classList.add("is-image-in");
+        }, imageInDelay);
 
-            // introText.style.filter = "brightness(10%)"
-            // introNameDisplay.style.letterSpacing = welcomeTracking
-            // introText.style.filter = "opacity(10%)"
-            // introText.style.transition = " .6s"
-            // introNameDisplay.style.transition = "1.6s"
-            // introNameDisplay.style.fontSize = "380px"
-            // introNameDisplay.style.textAlign = "center"
-            // introNameDisplay.style.marginLeft = "-108px"
-            // introText.style.marginTop = "800px"
-            // introNote.style.filter = "brightness(5%)"
-        }, 1500);
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-disp-in");
+        }, dispInDelay);
+
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-text-in");
+        }, textInDelay);
+
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-dissolving");
+        }, dissolveDelay);
+
+        window.setTimeout(() => {
+            introOverlay.classList.add("is-exiting");
+            body.classList.remove("intro-active");
+            revealHeroContent();
+        }, siteRevealDelay);
+
+        window.setTimeout(() => {
+            introOverlay.remove();
+        }, siteRevealDelay + 950);
     }
-
-    // window.setTimeout(() => {
-    //     introNote.style.transition = "1.6s"
-    //     introNote.style.filter = "opacity(70%)"
-    // }, imageInDelay);
-
-
-    window.setTimeout(() => {
-        introOverlay.classList.add("is-image-in");
-    }, imageInDelay);
-
-    window.setTimeout(() => {
-        introOverlay.classList.add("is-disp-in");
-    }, dispInDelay);
-
-    window.setTimeout(() => {
-        introOverlay.classList.add("is-text-in");
-    }, textInDelay);
-
-    window.setTimeout(() => {
-        introOverlay.classList.add("is-dissolving");
-    }, dissolveDelay);
-
-    window.setTimeout(() => {
-        introOverlay.classList.add("is-exiting");
-        body.classList.remove("intro-active");
-        revealHeroContent();
-    }, siteRevealDelay);
-
-    window.setTimeout(() => {
-        introOverlay.remove();
-    }, siteRevealDelay + 950);
 }
 
 function toggleMenu(forceState) {

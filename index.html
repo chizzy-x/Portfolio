@@ -7,13 +7,14 @@
     <meta name="description"
         content="A cinematic frontend developer portfolio built with only HTML, CSS, and vanilla JavaScript.">
     <title>CFX | Frontend Developer Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@500;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260804-3">
 </head>
 
 <body class="intro-active">
@@ -25,15 +26,8 @@
 
     <!-- Intro overlay that welcomes visitors before the portfolio appears -->
     <div class="intro-overlay" id="introOverlay">
-        <!-- <div class="intro-orb intro-orb-left" aria-hidden="true"></div> -->
-        <!-- <div class="intro-orb intro-orb-right" aria-hidden="true"></div> -->
-
         <div class="intro-shell">
             <div class="intro-text">
-                <!-- <h1 class="intro-name-display" id="introNameDisplay">
-                    WELCOME
-                </h1> -->
-
                 <p class="intro-note">Designing Interfaces that feel alive. </p>
             </div>
             <div class="intro-disp">
@@ -193,7 +187,7 @@
                         </p>
                         <p>
                             My approach combines technical precision with creative thinking. I obsess over
-                            details—typography, spacing, timing—because these small decisions compound into experiences
+                            details like typography, spacing, timing, because these small decisions compound into experiences
                             that feel intentional and alive.
                         </p>
 
@@ -231,88 +225,144 @@
                 </div>
 
                 <div class="projects-grid">
-                    <article class="project-card exam-card reveal" data-project="exam">
-                        <div class="project-visual visual-exam">
-                            <span class="exam-placeholder">📚</span>
-                        </div>
-                        <div class="project-content exam-content">
-                            <div class="exam-header">
-                                <span class="exam-category">Education / Study Platform</span>
-                                <h3>ExamPrepHub</h3>
+                    <article class="abstract-project-card reveal" data-project="exam">
+                        <div class="card-bg-number" aria-hidden="true">01</div>
+                        <div class="card-visual-deck">
+                            <div class="card-visual-inner">
+                                <img src="study.svg.png" alt="ExamPrepHub Platform Preview" class="card-img">
+                                <div class="abstract-corners-container">
+                                    <span class="corner-bracket top-l"></span>
+                                    <span class="corner-bracket top-r"></span>
+                                    <span class="corner-bracket bot-l"></span>
+                                    <span class="corner-bracket bot-r"></span>
+                                </div>
+                                <div class="visual-editorial-overlay">
+                                    <div class="meta-tag-left">[ 01 ] // PLATFORM</div>
+                                    <div class="meta-tag-right"><span class="live-dot"></span> LIVE</div>
+                                </div>
                             </div>
-                            <p>
+                        </div>
+                        <div class="card-body-deck">
+                            <div class="card-kicker">Education / Study Platform</div>
+                            <h3 class="card-title">ExamPrepHub</h3>
+                            <p class="card-desc">
                                 A web-based platform that helps students prepare for exams like JAMB, WAEC, and NECO with interactive quizzes, progress tracking, and study resources.
                             </p>
-                            <div class="project-tags exam-tags">
+                            <div class="card-tags">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
                             </div>
-                            <a href="https://examphb.netlify.app/" class="exam-button">View Project</a>
+                            <a href="https://examphb.netlify.app/" target="_blank" rel="noopener noreferrer" class="card-cta-btn">
+                                <span>View Project</span>
+                                <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card noir-card reveal" data-project="noir">
-                        <div class="project-visual visual-noir">
-                            <span class="noir-placeholder">NOIR</span>
-                        </div>
-                        <div class="project-content noir-content">
-                            <div class="noir-header">
-                                <span class="noir-category">Web Design / Brand Concept</span>
-                                <h3>NOIR</h3>
+                    <article class="abstract-project-card reveal" data-project="noir">
+                        <div class="card-bg-number" aria-hidden="true">02</div>
+                        <div class="card-visual-deck">
+                            <div class="card-visual-inner">
+                                <img src="NOIR.png" alt="NOIR Luxury Concept Preview" class="card-img">
+                                <div class="abstract-corners-container">
+                                    <span class="corner-bracket top-l"></span>
+                                    <span class="corner-bracket top-r"></span>
+                                    <span class="corner-bracket bot-l"></span>
+                                    <span class="corner-bracket bot-r"></span>
+                                </div>
+                                <div class="visual-editorial-overlay">
+                                    <div class="meta-tag-left">[ 02 ] // BRAND CONCEPT</div>
+                                    <div class="meta-tag-right"><span class="live-dot"></span> LIVE</div>
+                                </div>
                             </div>
-                            <p>
-                                A luxury fashion brand concept website built from scratch. Dark, cinematic, editorial — crafted to showcase premium branding and frontend craft.
+                        </div>
+                        <div class="card-body-deck">
+                            <div class="card-kicker">Web Design / Brand Concept</div>
+                            <h3 class="card-title">NOIR</h3>
+                            <p class="card-desc">
+                                A luxury fashion brand concept website built from scratch. Dark, cinematic, editorial, and crafted to showcase premium branding and frontend craft.
                             </p>
-                            <div class="project-tags noir-tags">
+                            <div class="card-tags">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
                             </div>
-                            <a href="https://chizzy-x.github.io/NOIR/" target="_blank" class="noir-button">Visit Live Site</a>
+                            <a href="https://chizzy-x.github.io/NOIR/" target="_blank" rel="noopener noreferrer" class="card-cta-btn">
+                                <span>Visit Live Site</span>
+                                <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card sabor-card reveal" data-project="sabor">
-                        <div class="project-visual visual-sabor">
-                            <span class="sabor-placeholder">🍽</span>
-                        </div>
-                        <div class="project-content sabor-content">
-                            <div class="sabor-header">
-                                <span class="sabor-category">Hospitality / Web Design Concept</span>
-                                <h3>Sabor</h3>
+                    <article class="abstract-project-card reveal" data-project="sabor">
+                        <div class="card-bg-number" aria-hidden="true">03</div>
+                        <div class="card-visual-deck">
+                            <div class="card-visual-inner">
+                                <img src="Sabor.png" alt="Sabor Restaurant Redesign Preview" class="card-img">
+                                <div class="abstract-corners-container">
+                                    <span class="corner-bracket top-l"></span>
+                                    <span class="corner-bracket top-r"></span>
+                                    <span class="corner-bracket bot-l"></span>
+                                    <span class="corner-bracket bot-r"></span>
+                                </div>
+                                <div class="visual-editorial-overlay">
+                                    <div class="meta-tag-left">[ 03 ] // HOSPITALITY</div>
+                                    <div class="meta-tag-right"><span class="live-dot"></span> LIVE</div>
+                                </div>
                             </div>
-                            <p>
+                        </div>
+                        <div class="card-body-deck">
+                            <div class="card-kicker">Hospitality / Web Design Concept</div>
+                            <h3 class="card-title">Sabor</h3>
+                            <p class="card-desc">
                                 A restaurant brand redesign for a real Lagos business. Rebuilt from a broken, generic website into a full concept site with a signature menu, atmosphere gallery, and a working WhatsApp-integrated reservation flow.
                             </p>
-                            <div class="project-tags sabor-tags">
+                            <div class="card-tags">
                                 <span>HTML</span>
                                 <span>CSS</span>
                                 <span>JavaScript</span>
                             </div>
-                            <a href="https://chizzy-x.github.io/Sabor/" target="_blank" class="sabor-button">Visit Live Site</a>
+                            <a href="https://chizzy-x.github.io/Sabor/" target="_blank" rel="noopener noreferrer" class="card-cta-btn">
+                                <span>Visit Live Site</span>
+                                <i class="ri-arrow-right-up-line" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card edx-card reveal" data-project="edx">
-                        <div class="project-visual visual-edx">
-                            <img src="edx.png" alt="ED-X">
-                        </div>
-                        <div class="project-content edx-content">
-                            <div class="edx-header">
-                                <span class="edx-category">Coming Soon</span>
-                                <h3>E.D.X</h3>
-                                <p class="edx-tagline">EVOLUTION. DESIGN. EXPERIENCE.</p>
+                    <article class="abstract-project-card reveal" data-project="edx">
+                        <div class="card-bg-number" aria-hidden="true">04</div>
+                        <div class="card-visual-deck">
+                            <div class="card-visual-inner">
+                                <img src="edx.png" alt="E.D.X Evolution Design Experience Preview" class="card-img">
+                                <div class="abstract-corners-container">
+                                    <span class="corner-bracket top-l"></span>
+                                    <span class="corner-bracket top-r"></span>
+                                    <span class="corner-bracket bot-l"></span>
+                                    <span class="corner-bracket bot-r"></span>
+                                </div>
+                                <div class="visual-editorial-overlay">
+                                    <div class="meta-tag-left">[ 04 ] // CREATIVE TECH</div>
+                                    <div class="meta-tag-right dev-status"><span class="dev-dot"></span> IN DEV</div>
+                                </div>
                             </div>
-                            <p>
+                        </div>
+                        <div class="card-body-deck">
+                            <div class="card-kicker">Creative Tech / Branding</div>
+                            <h3 class="card-title">E.D.X</h3>
+                            <p class="card-tagline">EVOLUTION. DESIGN. EXPERIENCE.</p>
+                            <p class="card-desc">
                                 ED-X is a futuristic creative tech company focused on premium branding, digital experiences, web design, and innovative software solutions for African businesses.
                             </p>
-                            <div class="project-tags edx-tags">
+                            <div class="card-tags">
                                 <span>Branding</span>
                                 <span>Tech Solutions</span>
                                 <span>Digital Experience</span>
                             </div>
-                            <button class="edx-button" type="button">Coming Soon</button>
+                            <button class="card-cta-btn disabled-btn" type="button" disabled>
+                                <span>Coming Soon</span>
+                                <i class="ri-lock-line" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </article>
                 </div>
@@ -482,12 +532,12 @@
                 <div class="cv-container">
                     <div class="cv-card reveal">
                         <div class="cv-image-wrapper">
-                            <img src="1757324652931.jpg" alt="CV Preview" class="cv-image" id="cvImageTrigger" style="cursor: pointer;">
+                            <img src="ChatGPT Image Aug 1, 2026, 12_16_05 PM.png" alt="CV Preview" class="cv-image" id="cvImageTrigger" style="cursor: pointer;">
                         </div>
                         <div class="cv-content">
-                            <h3>Chisom Bermard — Frontend Developer</h3>
+                            <h3>Chisom Bernard<br>Frontend Developer</h3>
                             <p>Download my full CV to see my complete experience, certifications, and technical background.</p>
-                            <a href="#" class="cv-download-btn" target="_blank">Download PDF</a>
+                            <a href="Chisom-Bernard-CV.pdf" class="cv-download-btn" download>Download PDF</a>
                         </div>
                     </div>
                 </div>
@@ -497,7 +547,7 @@
         <!-- CV Modal -->
         <div class="cv-modal" id="cvModal">
             <div class="cv-modal-content">
-                <img src="1757324652931.jpg" alt="CV Full View" class="cv-modal-image">
+                <img src="ChatGPT Image Aug 1, 2026, 12_16_05 PM.png" alt="CV Full View" class="cv-modal-image">
                 <button class="cv-modal-close" id="cvModalClose" aria-label="Close CV Modal">&times;</button>
             </div>
         </div>
